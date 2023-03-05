@@ -19,3 +19,12 @@ There are about 8 classes in the OS that we'll be implementing. In Jack, we'll u
 The Square Dance is where you can press any arrow key to continuously move the square the direction of the arrow key until reaches the wall. You can press q to quit the game, x to increase the size of the square by 2 pixels, and z to decrease the size of the square by 2 pixels (I had to search the video to see the hotkey). The Keyboard.readKey() function returns the keycode.
 
 I learned about graphics optimizations that you can use if you want to draw sprites. You can just draw pixels wherever you want, but it'd take about 40 commands to draw each pixel, so for a sprite with 75 pixels, you'd need exactly 3000 commands. However, there's also the poke method where you set the RAM value of the screen at a certain address to a certain number, which can be represented in a binar conversion that takes up at most 16 bits. To prevent all this poking, though, there is this very nice application that generates all the poke commands for you for a certain application in a 16x16 sprite, where you can click on a pixel to switch it between on and off.
+
+Bytes list:
+1) Create a class called Main. Then create a class called Number. 
+2) In Main, display a background of white in a while true loop. Then create a rectangle in black. Then display 16 rectangles in white. 
+3) Testing: Display 2s in those 16 rectangles. 
+4) Testing: Display 2048s in those 16 rectangles. 
+5) Testing: Display 65536s in those 16 rectangles. 
+6) Research and create a random() class in Game. When tested and fullty worked, paste into Math.jack operating system. 
+7) Create an array of 16 called grid. It mimics an array of arrays.
