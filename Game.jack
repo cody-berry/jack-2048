@@ -52,7 +52,22 @@ class Game {
 		}
 		// tests below. they set row1/row2/row3/row4/col1/col2/col3/col4
 		// to certain values and they test. 
-
+		let row1[0] = 2;
+		let row1[1] = 4;
+		let row1[2] = 8;
+		let row1[3] = 16;
+		let row2[0] = 2;
+		let row2[1] = 4;
+		let row2[2] = 8;
+		let row2[3] = 16;
+		let row3[0] = 2;
+		let row3[1] = 4;
+		let row3[2] = 8;
+		let row3[3] = 16;
+		let row4[0] = 2;
+		let row4[1] = 4;
+		let row4[2] = 8;
+		let row4[3] = 16;
 		// spawn 2 random 2s/4s
 
 		return this; // part of the language
@@ -75,11 +90,13 @@ class Game {
 		// would otherwise go to, which is what 68 is. 
 		do Screen.setColor(true); // color: black
 		// color: black, coverage: grid
-		do Screen.drawRectangle(TLCX - 4, TLCY - 4, TLCX + 68, TLCY + 68); 
+		do Screen.drawRectangle(TLCX - 4, TLCY - 4, TLCX + 68, TLCY + 68);
 
 		// White rectangles for each cell. Define x and y to 0. They 
 		// represent what cell we're on. Use a while loop that's condition
-		// is that y is less than 4. 
+		// is that y is less than 4.  
+		let x = 0;
+		let y = 0;
 		while (y < 4) {
 			/* Display a white square with a size of 14, starting from where
 			 * the cell should start. The cell should start 16*x + 1 pixels 
@@ -105,14 +122,257 @@ class Game {
 			 *	in a different language, you won't even need this formula. Maybe
 			 *	it comes from an extra TLCY. The bitmap must contain a wall on 
 			 *	the left and bottom because otherwise, the cell will have no 
-			 *	borders. 
+			 *	borders. Each y is 16 pixels, and 16*32 = 512. That's where we 
+			 *  get it from. 
 			 */
-			let memAddress = 17442 + y*486 + x;
+			let memAddress = 17442 + (y*512) + x;
 			// 2
-
+			if (y = 0) {
+				if (row1[x] = 2) {
+					// 2 coding: represents a 16-bit image of a 2
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 2017);
+					do Memory.poke(memAddress+96, 3121);
+					do Memory.poke(memAddress+128, 2065);
+					do Memory.poke(memAddress+160, 3073);
+					do Memory.poke(memAddress+192, 1537);
+					do Memory.poke(memAddress+224, 769);
+					do Memory.poke(memAddress+256, 385);
+					do Memory.poke(memAddress+288, 193);
+					do Memory.poke(memAddress+320, 97);
+					do Memory.poke(memAddress+352, 49);
+					do Memory.poke(memAddress+384, 4081);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 1) {
+				if (row2[x] = 2) {
+					// 2 coding: represents a 16-bit image of a 2
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 2017);
+					do Memory.poke(memAddress+96, 3121);
+					do Memory.poke(memAddress+128, 2065);
+					do Memory.poke(memAddress+160, 3073);
+					do Memory.poke(memAddress+192, 1537);
+					do Memory.poke(memAddress+224, 769);
+					do Memory.poke(memAddress+256, 385);
+					do Memory.poke(memAddress+288, 193);
+					do Memory.poke(memAddress+320, 97);
+					do Memory.poke(memAddress+352, 49);
+					do Memory.poke(memAddress+384, 4081);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 2) {
+				if (row3[x] = 2) {
+					// 2 coding: represents a 16-bit image of a 2
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 2017);
+					do Memory.poke(memAddress+96, 3121);
+					do Memory.poke(memAddress+128, 2065);
+					do Memory.poke(memAddress+160, 3073);
+					do Memory.poke(memAddress+192, 1537);
+					do Memory.poke(memAddress+224, 769);
+					do Memory.poke(memAddress+256, 385);
+					do Memory.poke(memAddress+288, 193);
+					do Memory.poke(memAddress+320, 97);
+					do Memory.poke(memAddress+352, 49);
+					do Memory.poke(memAddress+384, 4081);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 3) {
+				if (row4[x] = 2) {
+					// 2 coding: represents a 16-bit image of a 2
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 2017);
+					do Memory.poke(memAddress+96, 3121);
+					do Memory.poke(memAddress+128, 2065);
+					do Memory.poke(memAddress+160, 3073);
+					do Memory.poke(memAddress+192, 1537);
+					do Memory.poke(memAddress+224, 769);
+					do Memory.poke(memAddress+256, 385);
+					do Memory.poke(memAddress+288, 193);
+					do Memory.poke(memAddress+320, 97);
+					do Memory.poke(memAddress+352, 49);
+					do Memory.poke(memAddress+384, 4081);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			}
 			// 4
+			if (y = 0) {
+				if (row1[x] = 4) {
+					// 4 coding: represents a 16-bit image of a 4
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1057);
+					do Memory.poke(memAddress+96, 1057);
+					do Memory.poke(memAddress+128, 1057);
+					do Memory.poke(memAddress+160, 1057);
+					do Memory.poke(memAddress+192, 1057);
+					do Memory.poke(memAddress+224, 2017);
+					do Memory.poke(memAddress+256, 1025);
+					do Memory.poke(memAddress+288, 1025);
+					do Memory.poke(memAddress+320, 1025);
+					do Memory.poke(memAddress+352, 1025);
+					do Memory.poke(memAddress+384, 1025);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 1) {
+				if (row2[x] = 4) {
+					// 4 coding: represents a 16-bit image of a 4
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1057);
+					do Memory.poke(memAddress+96, 1057);
+					do Memory.poke(memAddress+128, 1057);
+					do Memory.poke(memAddress+160, 1057);
+					do Memory.poke(memAddress+192, 1057);
+					do Memory.poke(memAddress+224, 2017);
+					do Memory.poke(memAddress+256, 1025);
+					do Memory.poke(memAddress+288, 1025);
+					do Memory.poke(memAddress+320, 1025);
+					do Memory.poke(memAddress+352, 1025);
+					do Memory.poke(memAddress+384, 1025);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 2) {
+				if (row3[x] = 4) {
+					// 4 coding: represents a 16-bit image of a 4
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1057);
+					do Memory.poke(memAddress+96, 1057);
+					do Memory.poke(memAddress+128, 1057);
+					do Memory.poke(memAddress+160, 1057);
+					do Memory.poke(memAddress+192, 1057);
+					do Memory.poke(memAddress+224, 2017);
+					do Memory.poke(memAddress+256, 1025);
+					do Memory.poke(memAddress+288, 1025);
+					do Memory.poke(memAddress+320, 1025);
+					do Memory.poke(memAddress+352, 1025);
+					do Memory.poke(memAddress+384, 1025);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 3) {
+				if (row4[x] = 4) {
+					// 4 coding: represents a 16-bit image of a 4
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1057);
+					do Memory.poke(memAddress+96, 1057);
+					do Memory.poke(memAddress+128, 1057);
+					do Memory.poke(memAddress+160, 1057);
+					do Memory.poke(memAddress+192, 1057);
+					do Memory.poke(memAddress+224, 2017);
+					do Memory.poke(memAddress+256, 1025);
+					do Memory.poke(memAddress+288, 1025);
+					do Memory.poke(memAddress+320, 1025);
+					do Memory.poke(memAddress+352, 1025);
+					do Memory.poke(memAddress+384, 1025);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			}
 
 			// 8
+			if (y = 0) {
+				if (row1[x] = 8) {
+					// 8 coding: represents a 16-bit image of a 8
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1985);
+					do Memory.poke(memAddress+96, 3169);
+					do Memory.poke(memAddress+128, 2081);
+					do Memory.poke(memAddress+160, 2081);
+					do Memory.poke(memAddress+192, 3169);
+					do Memory.poke(memAddress+224, 1985);
+					do Memory.poke(memAddress+256, 3169);
+					do Memory.poke(memAddress+288, 2081);
+					do Memory.poke(memAddress+320, 2081);
+					do Memory.poke(memAddress+352, 3169);
+					do Memory.poke(memAddress+384, 1985);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 1) {
+				if (row2[x] = 8) {
+					// 8 coding: represents a 16-bit image of a 8
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1985);
+					do Memory.poke(memAddress+96, 3169);
+					do Memory.poke(memAddress+128, 2081);
+					do Memory.poke(memAddress+160, 2081);
+					do Memory.poke(memAddress+192, 3169);
+					do Memory.poke(memAddress+224, 1985);
+					do Memory.poke(memAddress+256, 3169);
+					do Memory.poke(memAddress+288, 2081);
+					do Memory.poke(memAddress+320, 2081);
+					do Memory.poke(memAddress+352, 3169);
+					do Memory.poke(memAddress+384, 1985);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 2) {
+				if (row3[x] = 8) {
+					// 8 coding: represents a 16-bit image of a 8
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1985);
+					do Memory.poke(memAddress+96, 3169);
+					do Memory.poke(memAddress+128, 2081);
+					do Memory.poke(memAddress+160, 2081);
+					do Memory.poke(memAddress+192, 3169);
+					do Memory.poke(memAddress+224, 1985);
+					do Memory.poke(memAddress+256, 3169);
+					do Memory.poke(memAddress+288, 2081);
+					do Memory.poke(memAddress+320, 2081);
+					do Memory.poke(memAddress+352, 3169);
+					do Memory.poke(memAddress+384, 1985);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			} if (y = 3) {
+				if (row4[x] = 8) {
+					// 8 coding: represents a 16-bit image of a 8
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1985);
+					do Memory.poke(memAddress+96, 3169);
+					do Memory.poke(memAddress+128, 2081);
+					do Memory.poke(memAddress+160, 2081);
+					do Memory.poke(memAddress+192, 3169);
+					do Memory.poke(memAddress+224, 1985);
+					do Memory.poke(memAddress+256, 3169);
+					do Memory.poke(memAddress+288, 2081);
+					do Memory.poke(memAddress+320, 2081);
+					do Memory.poke(memAddress+352, 3169);
+					do Memory.poke(memAddress+384, 1985);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+			}
 
 			// 16
 
