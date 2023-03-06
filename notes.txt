@@ -22,9 +22,30 @@ I learned about graphics optimizations that you can use if you want to draw spri
 
 Bytes list:
 1) Create a class called Main. Then create a class called Number. 
-2) In Main, display a background of white in a while true loop. Then create a rectangle in black. Then display 16 rectangles in white. 
-3) Testing: Display 2s in those 16 rectangles. 
-4) Testing: Display 2048s in those 16 rectangles. 
-5) Testing: Display 65536s in those 16 rectangles. 
-6) Research and create a random() class in Game. When tested and fullty worked, paste into Math.jack operating system. 
-7) Create an array of 16 called grid. It mimics an array of arrays.
+2) In Main, display a background of white in a while true loop, displaying the score at the top-left. Then create a rectangle in black. Then display 16 rectangles in white. 
+3) Testing: Display 2s in those 16 rectangles. Comment out the code when done testing. 
+6) Research and create a random() class in Main. When tested and fullty worked, paste into Math.jack operating system. 
+7) Create 4 arrays of 4 called row1, row2, row3, and row4. row1 is the top row and row4 is the bottom row. 
+8) Create 4 arrays of 4 called col1, col2, col3, and col4. col1 is the left column and row4 is the right column. 
+9) Create an 16x16 image for a scaled-down version of 16. Then display them inside row1, col1.
+10) For every row, display its number. Use the supplied poke commands for 16.
+11) Repeat steps 9 and 10 for 32, 64, 128, 256, 512, and so on until, including, 65536 and then 131072. 
+12) Make a convertRowsToCols method, which converts the row representation to the column representation. 
+13) Testing: Put [2, 4, 4, 8] inside row1. Then call convertRowsToCols(). Render column-by-column. 
+14) Testing: Put [2, 4, 4, 8] inside row1, [8, 16, 16, 32] inside row2, [32, 64, 64, 128] inside row3, and [128, 256, 256, 512] inside row4. Then convert to columns. Render column-by-column.
+15) Make a convertColsToRows method, which converts the column representation to the row representation. 
+16) Testing: Repeat the tests in 13 and 14 except make col1 row1, col2 row2, col3 row3, and col4 row4. Render row-by-row. 
+17) Using the random() function, make 2 places for numbers. Then roll the die to determine whether it's a 4 or a 2. 
+18) Implement moveLeft(). Start without merging numbers as complications will arise. Then call convertRowsToCols(). 
+19) In Main's while loop, if the key is LEFT_ARROW, call moveLeft. 
+20) Testing: Reload until both numbers are in the same row. Then call moveLeft(). 
+21) Add moveLeft() merging. Note that a number can only be merged once. 
+22) Encapsulate spawning in spawnRandomNum().
+23) Call spawnRandomNum() in moveLeft. 
+24) Repeat steps 18-21 and step 23 for moveRight, moveDown, and moveUp. Call convertColstoRows() in moveDown and moveUp. 
+24) Create a failCase() function that temporarily moves left, temporarily moves right, temporarily moves up, and temporarily moves down, then checks if it's equal. 
+25) When merging happens, add an amount of score equal to the result of the merging. This results in a score divisible by 4. 
+26) Display the score, originally 0, on the bottom-left of the screen. 
+27) If failCase() returns true, return from Main.run() and display 'GAME FAILED' in black covering the 2048 grid. 
+28) If the game has been failed and it is still left on, press n to start a new game and g to view the 2048 grid. Display these controls on the top-left of the screen. 
+29) Start playing and have fun! Add any features you want. [...]
