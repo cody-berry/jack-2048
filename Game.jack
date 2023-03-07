@@ -1,0 +1,61 @@
+class Game {
+	field int posX, posY, posCursorX, posCursorY, score;
+	field Array row1, row2, row3, row4, col1, col2, col3, col4;
+
+	/**
+	  * Description: Creates a new 2048 game. 
+	  * Argument definition:
+	  *     posX: The top-left corner's x position of which this game
+	  *           is displayed. 
+	  *     posY: The top-left corner's y position of which this game
+	  *           is displayed.
+	  *     posCursorX: The top-left number's X cursor position. Will 
+	  *                 not be used for 2, 4, and 8. 
+	  *     posCursorY: The top-left number's Y cursor position. Will
+	  *                 not be used for 2, 4, and 8.
+	  */
+	constructor Game new(int posXArg, int posYArg, int posCursorXArg, int posCursorYArg) {
+		let posX = posXArg;
+		let posY = posYArg;
+		let posCursorX = posCursorXArg;
+		let posCursorY = posCursorYArg;
+		let row1 = Array.new(4);
+		let row2 = Array.new(4);
+		let row3 = Array.new(4);
+		let row4 = Array.new(4);
+		let col1 = Array.new(4);
+		let col2 = Array.new(4);
+		let col3 = Array.new(4);
+		let col4 = Array.new(4);
+		let score = 0;
+		return this;
+	}
+
+	method void display() {
+		var int x, y;
+		// white background
+		do Screen.setColor(false);
+		do Screen.drawRectangle(0, 0, 511, 255);
+
+		// black rectangle
+		do Screen.setColor(true);
+		do Screen.drawRectangle(posX-4, posY-4, posX+68, posY+68);
+
+		// grid
+		let x = 0;
+		let y = 0;
+
+		// white rectangles for grid
+		do Screen.setColor(false);
+		while (y < 4) {
+			do Screen.drawRectangle(posX + 1 + (x*16), posY + 1 + (y*16), posX + 15 + (x*16), posY + 15 + (y*16));
+			let x = x + 1;
+			if (x > 3) {
+				let x = 0;
+				let y = y + 1;
+			}
+		}
+
+		return;
+	}
+}

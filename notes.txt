@@ -22,7 +22,7 @@ I learned about graphics optimizations that you can use if you want to draw spri
 
 Bytes list:
 1) Create a class called Main. Then create a class called Number. 
-2) In Main, display a background of white in a while true loop, displaying the score at the top-left. Then create a rectangle in black. Then display 16 rectangles in white. 
+2) In Main, display a background of white in a while true loop. Then create a rectangle in black. Then display 16 rectangles in white. 
 3) Testing: Display 2s in those 16 rectangles. Comment out the code when done testing. 
 6) Research and create a random() class in Main. When tested and fullty worked, paste into Math.jack operating system. 
 7) Create 4 arrays of 4 called row1, row2, row3, and row4. row1 is the top row and row4 is the bottom row. 

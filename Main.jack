@@ -1,0 +1,11 @@
+class Main {
+	function void main() {
+		var Game game;
+		let game = Game.new(32, 32, 2, 2);
+		while (true) {
+			do game.display();
+			do Sys.wait(100);
+		}
+		return;
+	}
+}
