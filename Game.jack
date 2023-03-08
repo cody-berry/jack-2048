@@ -27,12 +27,44 @@ class Game {
 		let col2 = Array.new(4);
 		let col3 = Array.new(4);
 		let col4 = Array.new(4);
+		let row1[0] = 32;
+		let row1[1] = 4;
+		let row1[2] = 8;
+		let row1[3] = 16;
+		let row2[0] = 0;
+		let row2[1] = 0;
+		let row2[2] = 0;
+		let row2[3] = 0;
+		let row3[0] = 0;
+		let row3[1] = 0;
+		let row3[2] = 2;
+		let row3[3] = 0;
+		let row4[0] = 0;
+		let row4[1] = 0;
+		let row4[2] = 0;
+		let row4[3] = 0;
+		let col1[0] = 0;
+		let col1[1] = 0;
+		let col1[2] = 0;
+		let col1[3] = 0;
+		let col2[0] = 0;
+		let col2[1] = 0;
+		let col2[2] = 0;
+		let col2[3] = 0;
+		let col3[0] = 0;
+		let col3[1] = 0;
+		let col3[2] = 0;
+		let col3[3] = 0;
+		let col4[0] = 0;
+		let col4[1] = 0;
+		let col4[2] = 0;
+		let col4[3] = 0;
 		let score = 0;
 		return this;
 	}
 
 	method void display() {
-		var int x, y;
+		var int x, y, memAddress;
 		// white background
 		do Screen.setColor(false);
 		do Screen.drawRectangle(0, 0, 511, 255);
@@ -49,6 +81,104 @@ class Game {
 		do Screen.setColor(false);
 		while (y < 4) {
 			do Screen.drawRectangle(posX + 1 + (x*16), posY + 1 + (y*16), posX + 15 + (x*16), posY + 15 + (y*16));
+			if (y = 0) {
+				if (row1[x] = 2) {
+					let memAddress = 17442 + x;
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 993);
+					do Memory.poke(memAddress+64, 1585);
+					do Memory.poke(memAddress+96, 1041);
+					do Memory.poke(memAddress+128, 1025);
+					do Memory.poke(memAddress+160, 1537);
+					do Memory.poke(memAddress+192, 769);
+					do Memory.poke(memAddress+224, 385);
+					do Memory.poke(memAddress+256, 193);
+					do Memory.poke(memAddress+288, 97);
+					do Memory.poke(memAddress+320, 49);
+					do Memory.poke(memAddress+352, 2033);
+					do Memory.poke(memAddress+384, 1);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+				if (row1[x] = 4) {
+					let memAddress = 17442 + x;
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 769);
+					do Memory.poke(memAddress+96, 897);
+					do Memory.poke(memAddress+128, 705);
+					do Memory.poke(memAddress+160, 609);
+					do Memory.poke(memAddress+192, 561);
+					do Memory.poke(memAddress+224, 4081);
+					do Memory.poke(memAddress+256, 513);
+					do Memory.poke(memAddress+288, 513);
+					do Memory.poke(memAddress+320, 513);
+					do Memory.poke(memAddress+352, 513);
+					do Memory.poke(memAddress+384, 513);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+				if (row1[x] = 8) {
+					let memAddress = 17442 + x;
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 1985);
+					do Memory.poke(memAddress+96, 3169);
+					do Memory.poke(memAddress+128, 2081);
+					do Memory.poke(memAddress+160, 2081);
+					do Memory.poke(memAddress+192, 3169);
+					do Memory.poke(memAddress+224, 1985);
+					do Memory.poke(memAddress+256, 3169);
+					do Memory.poke(memAddress+288, 2081);
+					do Memory.poke(memAddress+320, 2081);
+					do Memory.poke(memAddress+352, 3169);
+					do Memory.poke(memAddress+384, 1985);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+				if (row1[x] = 16) {
+					let memAddress = 17442 + x;
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 3849);
+					do Memory.poke(memAddress+96, 6537);
+					do Memory.poke(memAddress+128, 4233);
+					do Memory.poke(memAddress+160, 137);
+					do Memory.poke(memAddress+192, 137);
+					do Memory.poke(memAddress+224, 3977);
+					do Memory.poke(memAddress+256, 6537);
+					do Memory.poke(memAddress+288, 4233);
+					do Memory.poke(memAddress+320, 4233);
+					do Memory.poke(memAddress+352, 6537);
+					do Memory.poke(memAddress+384, 3849);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				} 
+				if (row1[x] = 32) {
+					let memAddress = 17442 + x;
+					do Memory.poke(memAddress+0, 1);
+					do Memory.poke(memAddress+32, 1);
+					do Memory.poke(memAddress+64, 15481);
+					do Memory.poke(memAddress+96, 26317);
+					do Memory.poke(memAddress+128, 17029);
+					do Memory.poke(memAddress+160, 24705);
+					do Memory.poke(memAddress+192, 8385);
+					do Memory.poke(memAddress+224, 12409);
+					do Memory.poke(memAddress+256, 6337);
+					do Memory.poke(memAddress+288, 2177);
+					do Memory.poke(memAddress+320, 3205);
+					do Memory.poke(memAddress+352, 1741);
+					do Memory.poke(memAddress+384, 32377);
+					do Memory.poke(memAddress+416, 1);
+					do Memory.poke(memAddress+448, 1);
+					do Memory.poke(memAddress+480, -1);
+				}
+
+			}
 			let x = x + 1;
 			if (x > 3) {
 				let x = 0;
