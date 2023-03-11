@@ -37,7 +37,7 @@ pop this 12
 push constant 0
 push this 5
 add
-push constant 8192
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -45,7 +45,7 @@ pop that 0
 push constant 1
 push this 5
 add
-push constant 1024
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -53,7 +53,7 @@ pop that 0
 push constant 2
 push this 5
 add
-push constant 2048
+push constant 4
 pop temp 0
 pop pointer 1
 push temp 0
@@ -61,7 +61,7 @@ pop that 0
 push constant 3
 push this 5
 add
-push constant 4096
+push constant 8
 pop temp 0
 pop pointer 1
 push temp 0
@@ -117,7 +117,7 @@ pop that 0
 push constant 2
 push this 7
 add
-push constant 2
+push constant 0
 pop temp 0
 pop pointer 1
 push temp 0
@@ -1849,5 +1849,346 @@ pop local 1
 label IF_FALSE14
 goto WHILE_EXP0
 label WHILE_END0
+push constant 0
+return
+function Game.convertRowsToCols 0
+push argument 0
+pop pointer 0
+push constant 0
+push this 9
+add
+push constant 0
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 9
+add
+push constant 0
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 9
+add
+push constant 0
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 9
+add
+push constant 0
+push this 8
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 10
+add
+push constant 1
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 10
+add
+push constant 1
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 10
+add
+push constant 1
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 10
+add
+push constant 1
+push this 8
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 11
+add
+push constant 2
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 11
+add
+push constant 2
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 11
+add
+push constant 2
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 11
+add
+push constant 2
+push this 8
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 12
+add
+push constant 3
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 12
+add
+push constant 3
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 12
+add
+push constant 3
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 12
+add
+push constant 3
+push this 8
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 1
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 2
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 3
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 1
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 2
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 3
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+push this 11
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 1
+push this 11
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 2
+push this 11
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 3
+push this 11
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+push this 12
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 1
+push this 12
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 2
+push this 12
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 3
+push this 12
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
 push constant 0
 return

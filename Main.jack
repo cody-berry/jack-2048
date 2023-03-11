@@ -2,10 +2,11 @@ class Main {
 	function void main() {
 		var Game game;
 		let game = Game.new(32, 32, 3, 5);
-		while (true) {
-			do game.display();
-			do Sys.wait(150);
-		}
+		do game.convertRowsToCols();
+		// while (true) {
+		// 	do game.display();
+		// 	do Sys.wait(150);
+		// }
 		return;
 	}
 }
