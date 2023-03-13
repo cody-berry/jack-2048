@@ -1,12 +1,51 @@
 class Main {
+	/**
+	  * Description: The function that always runs first, Main.main(). 
+	  */
 	function void main() {
-		var Game game;
-		let game = Game.new(32, 32, 3, 5);
-		do game.convertRowsToCols();
-		// while (true) {
-		// 	do game.display();
-		// 	do Sys.wait(150);
-		// }
-		return;
+		// The base of the 2048 game: a Game itself. 
+
+		// Method 1 below. Use when still testing non-arrow-key-related subjects.
+		// In a While True loop...
+
+			// Display the game. 
+
+			// Wait for a second to re-display. 
+
+		// Method 2 below. When starting, comment out method 1 code. Use when 
+		// testing arrow-key-related subjects. Use an square-dance-inspired
+		// algorithm. 
+		// In a While True loop...
+
+			// In a while loop with the condition of the game not being failed...
+	
+				// Display the game. 
+	
+				// While the key is 0, do nothing. 
+	
+				// Check the key. 
+				// Left arrow: Call moveLeft().
+	
+				// Right arrow: Call moveRight().
+	
+				// Up arrow: Call moveUp().
+	
+				// Down arrow: Call moveDown(). 
+	
+				// While the key is not 0, do nothing. 
+	
+				// Display the game. 
+	
+			// In a while loop with the condition of the game not being 
+			// restarted...
+
+				// Display 'GAME FAILED' on the corners of the screen. 
+
+				// While the key is 0, do nothing. 
+
+				// Check the key. 
+				// g: Make it so that the game has been restarted. 
+
+				// While the key is not 0, do nothing. 
 	}
 }

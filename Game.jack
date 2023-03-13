@@ -1,39 +1,132 @@
 class Game {
-	field int posX, posY, posCursorX, posCursorY, score;
-	field Array row1, row2, row3, row4, col1, col2, col3, col4;
+	field int TLCX, TLCY, score;
+	field Array row1, row2, row3, row4;
+	field Array col1, col2, col3, col4;
 
 	/**
-	  * Description: Creates a new 2048 game. 
+	  * Description: Creates a new 2048 game with a 4x4 grid. Dummy 
+	  *              2048, or 2048 with a 6x6 grid, is not 
+	  * 			 implemented here. The fields have the same name
+	  *				 as the args without the Arg suffix, which is why
+	  *				 it is there. 
 	  * Argument definition:
-	  *     posX: The top-left corner's x position of which this game
-	  *           is displayed. 
-	  *     posY: The top-left corner's y position of which this game
-	  *           is displayed.
-	  *     posCursorX: The top-left number's X cursor position. Will 
-	  *                 not be used for 2, 4, and 8. 
-	  *     posCursorY: The top-left number's Y cursor position. Will
-	  *                 not be used for 2, 4, and 8.
+	  *     TLCXArg: The top-left corner's x position of which this game
+	  *           is displayed. Stands for Top-Left Corner X.
+	  *     TLCYArg: The top-left corner's y position of which this game
+	  *           is displayed. Stands for Top-Left Corner Y. 
+	  *   	score: The current score in the game. Always divisible by
+	  * 	       4 because score is increased by the result of 
+	  * 	       merging 2 numbers, not a very accurate measure of 
+	  * 	       how well you're doing.
 	  */
-	constructor Game new(int posXArg, int posYArg, int posCursorXArg, int posCursorYArg) {
+	constructor Game new(int TLCXArg, int TLCYArg) {
+		// set TLCX to TLCXArg. TLCX serves the same purpose as TLCXArg.
+
+		// set TLCY to TLCYArg. TLCY severs the same purpose as TLCYArg. 
+
+		// define the score, initialized at 0
+
+		// use a for loop to set row1's, row2's, etc. and col1's, 
+		// col2's, etc. elements to 0. 
+
+		// tests below. they set row1/row2/row3/row4/col1/col2/col3/col4
+		// to certain values and they test. 
+
+		// spawn 2 random 2s/4s
 	}
 
+	/**
+	  * Description: Displays the 2048 board along with the numbers. 
+	  * Argument definition: None.
+	  */
 	method void display() {
-		var int x, y, memAddress;
-		// white background
-		do Screen.setColor(false);
-		do Screen.drawRectangle(0, 0, 511, 255);
+		// White background. Spans across the entire screen. 
 
-		// black rectangle
-		do Screen.setColor(true);
-		do Screen.drawRectangle(posX-4, posY-4, posX+68, posY+68);
+		// Black rectangle. The rectangle has a padding of 4, meaning that
+		// the top-left corner is actually 4 more to the top-left corner
+		// of the screen than it would usually be. It has a size of 64, 
+		// but it actually goes 4 extra to the bottom-right corner than it
+		// would otherwise go to, which is what 68 is. 
 
-		// grid
-		let x = 0;
-		let y = 0;
+		// White rectangles for each cell. Define x and y to 0. They 
+		// represent what cell we're on. Use a while loop that's condition
+		// is that y is less than 4. 
 
-		// white rectangles for grid
+			/* Display a white square with a size of 15, starting from where
+			 *	the cell should start. The cell should start 16*x pixels to 
+			 *	the right of TLCX and 16*y pixels down of TLCY. 
+             *
+			 *	Display the powers of 2 tiles: 
+			 *	2/4/8/16/32/64/128/256/512/1024/2048
+			 *	(/4096/8192/16384/32768/65536?). 
+			 *
+			 *	memAddress is where to start displaying the number. It is
+			 *	always 17442 in this system, but you have to figure out by
+			 *	yourself if you're copying this to another program. Generally,
+			 *	the formula is 16384 + location, where location = TLCX/16 + 
+			 *	TLCY*32. Then where does the extra 32 come from? If your screen
+			 *	size is adjusted, this will be different. And, if you are coding
+			 *	in a different language, you won't even need this formula. Maybe
+			 *	it comes from an extra TLCY. The bitmap must contain a wall on 
+			 *	the left and bottom because otherwise, the cell will have no 
+			 *	borders. 
+			 */
+
+			// 2
+
+			// 4
+
+			// 8
+
+			// 16
+
+			// 32
+
+			// 64
+
+			// 128
+
+			// 256
+
+			// 512
+
+			// 1024
+
+			// 2048
+
+			// Future plans: 4096, 8192, 16384, 32768, 65536, and 131072
 	}
 
+	/**
+	  * Description: Does what it is named for; converts the row representation
+	  *              with the column representation. Prints column 1 first, 
+	  *              column 2 second, etc. if testing. After each number, prints 
+	  *              a line. Displays the column itself from top-to-bottom in 
+	  *              the actual column to top-to-bottom on the print screen. 
+	  * Argument definition: None.
+	  */
 	method void convertRowsToCols() {
+		// top-left corner: column 1, row 1. 
+
+		// top row, middle-left column, or row 1, column 2. 
+
+		// top row, middle-right column, or row 1, column 3. 
+
+		// top-right corner: row 1, column 4. 
+
+		// repeat for row 2. 
+
+		// repeat for row 3. 
+
+		// repeat for row 4. 
+	}
+
+	/**
+	  * Description: Shifts to the left. Warning: Haven't implemented merging yet. 
+	  */
+	method void moveLeft() {
+		// Iterate through every number in row1. 
+
+		// In progress. 
 	}
 }
