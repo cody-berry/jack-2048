@@ -3,18 +3,22 @@ class Main {
 	  * Description: The function that always runs first, Main.main(). 
 	  */
 	function void main() {
+		var Game game;
 		// The base of the 2048 game: a Game itself. 
-
+		let game = Game.new(32, 32);
 		// Method 1 below. Use when still testing non-arrow-key-related subjects.
 		// In a While True loop...
-
+		while (true) {
 			// Display the game. 
-
+			do game.display();
 			// Wait for a second to re-display. 
-
-		// Method 2 below. When starting, comment out method 1 code. Use when 
-		// testing arrow-key-related subjects. Use an square-dance-inspired
-		// algorithm. 
+			do Sys.wait(1000);
+		}
+		/*
+		 * Method 2 below. When starting, comment out method 1 code. Use when 
+		 * testing arrow-key-related subjects. Use an square-dance-inspired
+		 * algorithm. 
+		 */
 		// In a While True loop...
 
 			// In a while loop with the condition of the game not being failed...
@@ -47,5 +51,7 @@ class Main {
 				// g: Make it so that the game has been restarted. 
 
 				// While the key is not 0, do nothing. 
+
+		return;
 	}
 }

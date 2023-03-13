@@ -14,25 +14,48 @@ class Game {
 	  *           is displayed. Stands for Top-Left Corner X.
 	  *     TLCYArg: The top-left corner's y position of which this game
 	  *           is displayed. Stands for Top-Left Corner Y. 
-	  *   	score: The current score in the game. Always divisible by
-	  * 	       4 because score is increased by the result of 
-	  * 	       merging 2 numbers, not a very accurate measure of 
-	  * 	       how well you're doing.
 	  */
 	constructor Game new(int TLCXArg, int TLCYArg) {
+		var int i;
 		// set TLCX to TLCXArg. TLCX serves the same purpose as TLCXArg.
-
+		let TLCX = TLCXArg;
 		// set TLCY to TLCYArg. TLCY severs the same purpose as TLCYArg. 
-
-		// define the score, initialized at 0
-
+		let TLCY = TLCYArg;
+		// define the score, initialized at 0. Score is always divisible 
+		// by 4 because score is increased by the result of merging 2 
+		// numbers, not a very accurate measure of how well you're doing.
+		let score = 0;
 		// use a for loop to set row1's, row2's, etc. and col1's, 
-		// col2's, etc. elements to 0. 
+		// col2's, etc. elements to 0. in order to keep track of what 
+		// number we're on, we use i, set to 0 by default. 
+		let i = 0;
 
+		let row1 = Array.new(4);
+		let row2 = Array.new(4);
+		let row3 = Array.new(4);
+		let row4 = Array.new(4);
+		let col1 = Array.new(4);
+		let col2 = Array.new(4);
+		let col3 = Array.new(4);
+		let col4 = Array.new(4);
+
+		while (i < 4) {
+			let row1[i] = 0;
+			let row2[i] = 0;
+			let row3[i] = 0;
+			let row4[i] = 0;
+			let col1[i] = 0;
+			let col2[i] = 0;
+			let col3[i] = 0;
+			let col4[i] = 0;
+			let i = i + 1;
+		}
 		// tests below. they set row1/row2/row3/row4/col1/col2/col3/col4
 		// to certain values and they test. 
 
 		// spawn 2 random 2s/4s
+
+		return this; // part of the language
 	}
 
 	/**
@@ -40,26 +63,39 @@ class Game {
 	  * Argument definition: None.
 	  */
 	method void display() {
+		var int x, y, memAddress;
 		// White background. Spans across the entire screen. 
+		do Screen.setColor(false); // color: white
+		do Screen.drawRectangle(0, 0, 511, 255); // color: white, coverage: all
 
 		// Black rectangle. The rectangle has a padding of 4, meaning that
 		// the top-left corner is actually 4 more to the top-left corner
 		// of the screen than it would usually be. It has a size of 64, 
 		// but it actually goes 4 extra to the bottom-right corner than it
 		// would otherwise go to, which is what 68 is. 
+		do Screen.setColor(true); // color: black
+		// color: black, coverage: grid
+		do Screen.drawRectangle(TLCX - 4, TLCY - 4, TLCX + 68, TLCY + 68); 
 
 		// White rectangles for each cell. Define x and y to 0. They 
 		// represent what cell we're on. Use a while loop that's condition
 		// is that y is less than 4. 
-
-			/* Display a white square with a size of 15, starting from where
-			 *	the cell should start. The cell should start 16*x pixels to 
-			 *	the right of TLCX and 16*y pixels down of TLCY. 
-             *
+		while (y < 4) {
+			/* Display a white square with a size of 14, starting from where
+			 * the cell should start. The cell should start 16*x + 1 pixels 
+			 * the right of TLCX and 16*y + 1 pixels down of TLCY. 
+             */
+            do Screen.setColor(false); // color: white
+            // color: white, coverage: cell
+            do Screen.drawRectangle(TLCX + (16*x) + 1, TLCY + (16*y) + 1, 
+            	TLCX + (16*x) + 15, TLCX + (16*y) + 15);
+            /*
 			 *	Display the powers of 2 tiles: 
 			 *	2/4/8/16/32/64/128/256/512/1024/2048
 			 *	(/4096/8192/16384/32768/65536?). 
-			 *
+			 */
+
+			/*
 			 *	memAddress is where to start displaying the number. It is
 			 *	always 17442 in this system, but you have to figure out by
 			 *	yourself if you're copying this to another program. Generally,
@@ -71,7 +107,7 @@ class Game {
 			 *	the left and bottom because otherwise, the cell will have no 
 			 *	borders. 
 			 */
-
+			let memAddress = 17442 + y*486 + x;
 			// 2
 
 			// 4
@@ -95,6 +131,17 @@ class Game {
 			// 2048
 
 			// Future plans: 4096, 8192, 16384, 32768, 65536, and 131072
+
+			// Don't forget to increment x! If x is greater than 3, increment y and 
+			// reset x. 
+			let x = x + 1;
+			if (x > 3) {
+				let y = y + 1;
+				let x = 0;
+			}
+		}
+
+		return; // part of the language
 	}
 
 	/**
@@ -119,6 +166,10 @@ class Game {
 		// repeat for row 3. 
 
 		// repeat for row 4. 
+
+		// if testing, print according to function description. 
+
+		return; // part of the language
 	}
 
 	/**
@@ -128,5 +179,7 @@ class Game {
 		// Iterate through every number in row1. 
 
 		// In progress. 
+
+		return; // part of the language
 	}
 }
