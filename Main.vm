@@ -1,4 +1,12 @@
 function Main.main 1
+push constant 44
+pop static 0
+push constant 21
+pop static 1
+push constant 41
+pop static 2
+push constant 160
+pop static 3
 push constant 32
 push constant 32
 call Game.new 2
@@ -11,10 +19,39 @@ if-goto WHILE_END0
 push local 0
 call Game.display 1
 pop temp 0
-push constant 1000
+push constant 100
 call Sys.wait 1
 pop temp 0
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
+return
+function Main.random 1
+push static 0
+push static 1
+call Math.multiply 2
+push static 2
+add
+push static 3
+call Main.modulus 2
+pop local 0
+push local 0
+pop static 0
+push local 0
+push constant 10
+call Math.divide 2
+call Output.printInt 1
+pop temp 0
+push local 0
+push constant 10
+call Math.divide 2
+return
+function Main.modulus 0
+push argument 0
+push argument 0
+push argument 1
+call Math.divide 2
+push argument 1
+call Math.multiply 2
+sub
 return

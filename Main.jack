@@ -1,9 +1,15 @@
 class Main {
+	static int seed, a, c, m;
 	/**
 	  * Description: The function that always runs first, Main.main(). 
 	  */
 	function void main() {
 		var Game game;
+		// preparing for random()
+		let seed = 44;
+		let a = 21;
+		let c = 41;
+		let m = 160;
 		// The base of the 2048 game: a Game itself. 
 		let game = Game.new(32, 32);
 		// Method 1 below. Use when still testing non-arrow-key-related subjects.
@@ -11,8 +17,8 @@ class Main {
 		while (true) {
 			// Display the game. 
 			do game.display();
-			// Wait for a second to re-display. 
-			do Sys.wait(1000);
+			// Wait for a decisecond to re-display. 
+			do Sys.wait(100);
 		}
 		/*
 		 * Method 2 below. When starting, comment out method 1 code. Use when 
@@ -36,9 +42,9 @@ class Main {
 	
 				// Down arrow: Call moveDown(). 
 	
-				// While the key is not 0, do nothing. 
-	
 				// Display the game. 
+	
+				// While the key is not 0, do nothing. 
 	
 			// In a while loop with the condition of the game not being 
 			// restarted...
@@ -53,5 +59,37 @@ class Main {
 				// While the key is not 0, do nothing. 
 
 		return;
+	}
+	/**
+	  * Description: The random() function in Math.jack. It uses the linear 
+	  *              congruential generator method, always producing the same 
+	  *              results every run. However, the period is 1600, making it 
+	  *              near impossible to tell during a run without analyzing 
+	  *              patterns for 1600 moves. 
+	  * Algorithm description:
+	  *              seed — The starting number to work with. It is the only 
+	  *                     part of the algorithm that changes. 
+	  *              a — The multiplier for seed. 
+	  *              c — After multiplying "seed" and "a", c is added. 
+	  *              m — After all of that calculation is done, m, the modulus, 
+	  *                  comes into play. 
+	  */
+	function int random() {
+		var int result;
+		let result = Main.modulus(((seed*a) + c), m);
+		let seed = result;
+		do Output.printInt(result/10);
+		return result/10; // originally, the max is 1600. Now it's 100. 
+	}
+
+	/**
+      * Description: Math doesn't have a modulus in it. This function will 
+      *              fill in that gap. 
+	  */
+	function int modulus(int a, int b) {
+		// Although (a/b)*b might seem like just a, Jack doesn't support floating
+		// point division and floors instead, making (a/b)*b the biggest multiple 
+		// of b that doesn't go over a, exactly what we want to subtract from a. 
+		return a - ((a/b)*b);
 	}
 }
