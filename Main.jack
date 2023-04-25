@@ -5,6 +5,7 @@ class Main {
 	  */
 	function void main() {
 		var Game game;
+		var int key;
 		// preparing for random()
 		let seed = 44;
 		let a = 21;
@@ -14,26 +15,27 @@ class Main {
 		let game = Game.new(32, 32);
 		// Method 1 below. Use when still testing non-arrow-key-related subjects.
 		// In a While True loop...
-		while (true) {
-			// Display the game. 
-			do game.display();
-			// Wait for a decisecond to re-display. 
-			do Sys.wait(100);
-		}
+		// while (true) {
+		// 	// Display the game. 
+		// 	do game.display();
+		// 	// Wait for a decisecond to re-display. 
+		// 	do Sys.wait(100);
+		// }
 		/*
 		 * Method 2 below. When starting, comment out method 1 code. Use when 
 		 * testing arrow-key-related subjects. Use an square-dance-inspired
 		 * algorithm. 
 		 */
 		// In a While True loop...
-
+		while (true) {
 			// In a while loop with the condition of the game not being failed...
-	
+			
 				// Display the game. 
-	
+				// do game.display();
 				// While the key is 0, do nothing. 
-	
+				while (Memory.peek(24576) = 0) {}
 				// Check the key. 
+				let key = Memory.peek(24576);
 				// Left arrow: Call moveLeft().
 	
 				// Right arrow: Call moveRight().
@@ -41,10 +43,15 @@ class Main {
 				// Up arrow: Call moveUp().
 	
 				// Down arrow: Call moveDown(). 
-	
+				
+				// Testing: R: Spawn a random 2.
+				if (key = 82) {
+					do Output.printString("Spawning random number.    [JOKE]");
+				}
 				// Display the game. 
 	
 				// While the key is not 0, do nothing. 
+				while (~(Memory.peek(24576) = 0)) {}
 	
 			// In a while loop with the condition of the game not being 
 			// restarted...
@@ -57,6 +64,7 @@ class Main {
 				// g: Make it so that the game has been restarted. 
 
 				// While the key is not 0, do nothing. 
+		}
 
 		return;
 	}

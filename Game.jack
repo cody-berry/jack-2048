@@ -1064,12 +1064,7 @@ class Game {
 				let x = 0;
 			}
 		}
-
-
-
-		// testing for Main.random(). 
-		do Main.random();
-
+		
 		return; // part of the language
 	}
 
