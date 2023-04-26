@@ -52,22 +52,22 @@ class Game {
 		}
 		// tests below. they set row1/row2/row3/row4/col1/col2/col3/col4
 		// to certain values and they test. 
-		let row1[0] = 512;
-		let row1[1] = 1024;
-		let row1[2] = 2048;
-		let row1[3] = 256;
-		let row2[0] = 512;
-		let row2[1] = 1024;
-		let row2[2] = 2048;
-		let row2[3] = 256;
-		let row3[0] = 512;
-		let row3[1] = 1024;
-		let row3[2] = 2048;
-		let row3[3] = 256;
-		let row4[0] = 512;
-		let row4[1] = 1024;
-		let row4[2] = 2048;
-		let row4[3] = 256;
+		// let row1[0] = 0;
+		// let row1[1] = 0;
+		// let row1[2] = 0;
+		// let row1[3] = 0;
+		// let row2[0] = 0;
+		// let row2[1] = 0;
+		// let row2[2] = 0;
+		// let row2[3] = 0;
+		// let row3[0] = 0;
+		// let row3[1] = 0;
+		// let row3[2] = 0;
+		// let row3[3] = 0;
+		// let row4[0] = 0;
+		// let row4[1] = 0;
+		// let row4[2] = 0;
+		// let row4[3] = 0;
 		// let col1[0] = 0;
 		// let col1[1] = 0;
 		// let col1[2] = 0;
@@ -1105,5 +1105,24 @@ class Game {
 		// In progress. 
 
 		return; // part of the language
+	}
+
+	/** 
+	  * Description: Spawns a random two according to the Main.random() function. 
+	  */
+	method void spawnRandomTwo() {
+		var int location, row, col, iterations;
+		// the number of iterations is important. if we do this for 160 times in a
+		// row, the game is lost. 
+		
+		while (true) {
+			// always generates a value between 0 and 16, what we want it to be.
+
+			// column must be less than 4 but otherwise is always equal to location. 
+
+			// row is always location/4. you can go check yourself. 
+
+			// now assign it! return if there's something available. 
+		}
 	}
 }

@@ -46,7 +46,7 @@ class Main {
 				
 				// Testing: R: Spawn a random 2.
 				if (key = 82) {
-					do Output.printString("Spawning random number.    [JOKE]");
+					do game.spawnRandomTwo();
 				}
 				// Display the game. 
 	
