@@ -114,6 +114,38 @@ goto WHILE_EXP0
 label WHILE_END0
 push pointer 0
 return
+function Game.dispose 0
+push argument 0
+pop pointer 0
+push this 4
+call Array.dispose 1
+pop temp 0
+push this 5
+call Array.dispose 1
+pop temp 0
+push this 6
+call Array.dispose 1
+pop temp 0
+push this 7
+call Array.dispose 1
+pop temp 0
+push this 8
+call Array.dispose 1
+pop temp 0
+push this 9
+call Array.dispose 1
+pop temp 0
+push this 10
+call Array.dispose 1
+pop temp 0
+push this 11
+call Array.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
 function Game.display 3
 push argument 0
 pop pointer 0

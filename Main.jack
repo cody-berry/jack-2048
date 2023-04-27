@@ -26,6 +26,8 @@ class Main {
 		 * testing arrow-key-related subjects. Use an square-dance-inspired
 		 * algorithm. 
 		 */
+		// The game doesn't display immediately!
+		do game.display();
 		// In a While True loop...
 		while (true) {
 			// In a while loop with the condition of the game not being failed...
@@ -45,25 +47,34 @@ class Main {
 				// Down arrow: Call moveDown(). 
 				
 				// Testing: R: Spawn a random 2.
-				do game.display();
 				if (key = 82) {
 					do game.spawnRandomTwo();
 				}
-				// Display the game. 
+				// Display the game.
+				do game.display(); 
+
 				// While the key is not 0, do nothing. 
 				while (~(Memory.peek(24576) = 0)) {}
 			}
 			// In a while loop with the condition of the game not being 
 			// restarted...
-
+			while (game.getFail()) {
 				// Display 'GAME FAILED' on the top-left corner of the screen. 
-
+				do Output.moveCursor(0, 0);
+				do Output.printString("GAME FAILED");
 				// While the key is 0, do nothing. 
-
+				while (Memory.peek(24576) = 0) {}
 				// Check the key. 
+				let key = Memory.peek(24576);
 				// g: Make it so that the game has been restarted. 
-
+				if (key = 71) {
+					do game.dispose();
+					let game = Game.new(32, 32);
+					do game.display();
+				}
 				// While the key is not 0, do nothing. 
+				while (~(Memory.peek(24576) = 0)) {}
+			}
 		}
 
 		return;

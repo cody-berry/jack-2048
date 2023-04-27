@@ -92,6 +92,23 @@ class Game {
 		return this; // part of the language
 	}
 
+	/** 
+	  * Description: Disposes of the 2048 board along with any other classes that 
+	  *              need to be disposed of. 
+	  */
+	method void dispose() {
+		do row1.dispose();
+		do row2.dispose();
+		do row3.dispose();
+		do row4.dispose();
+		do col1.dispose();
+		do col2.dispose();
+		do col3.dispose();
+		do col4.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+
 	/**
 	  * Description: Displays the 2048 board along with the numbers. 
 	  * Argument definition: None.
