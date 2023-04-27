@@ -29,7 +29,7 @@ class Main {
 		// In a While True loop...
 		while (true) {
 			// In a while loop with the condition of the game not being failed...
-			
+			while (~game.getFail()) {
 				// Display the game. 
 				// do game.display();
 				// While the key is 0, do nothing. 
@@ -45,18 +45,18 @@ class Main {
 				// Down arrow: Call moveDown(). 
 				
 				// Testing: R: Spawn a random 2.
+				do game.display();
 				if (key = 82) {
 					do game.spawnRandomTwo();
 				}
 				// Display the game. 
-	
 				// While the key is not 0, do nothing. 
 				while (~(Memory.peek(24576) = 0)) {}
-	
+			}
 			// In a while loop with the condition of the game not being 
 			// restarted...
 
-				// Display 'GAME FAILED' on the corners of the screen. 
+				// Display 'GAME FAILED' on the top-left corner of the screen. 
 
 				// While the key is 0, do nothing. 
 
@@ -86,7 +86,6 @@ class Main {
 		var int result;
 		let result = Main.modulus(((seed*a) + c), m);
 		let seed = result;
-		do Output.printInt(result/10);
 		return result/10; // originally, the max is 1600. Now it's 100. 
 	}
 

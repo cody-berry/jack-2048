@@ -1,5 +1,6 @@
 class Game {
 	field int TLCX, TLCY, score;
+	field boolean failed;
 	field Array row1, row2, row3, row4;
 	field Array col1, col2, col3, col4;
 
@@ -25,6 +26,8 @@ class Game {
 		// by 4 because score is increased by the result of merging 2 
 		// numbers, not a very accurate measure of how well you're doing.
 		let score = 0;
+		// is the game failed?
+		let failed = false;
 		// use a for loop to set row1's, row2's, etc. and col1's, 
 		// col2's, etc. elements to 0. in order to keep track of what 
 		// number we're on, we use i, set to 0 by default. 
@@ -1069,6 +1072,23 @@ class Game {
 	}
 
 	/**
+	  * Description: You might agree that this is getting insane, but this function
+	  *              is so that you can retry the game. 
+	  */
+	method void setFailed() {
+		let failed = true;
+		return;
+	}
+
+	/**
+	  * Description: If the game is failed, this function returns true. Otherwise, 
+	  *              it returns false. 
+	  */
+	method boolean getFail() {
+		return failed;
+	}
+
+	/**
 	  * Description: Does what it is named for; converts the row representation
 	  *              with the column representation. Prints column 1 first, 
 	  *              column 2 second, etc. if testing. After each number, prints 
@@ -1097,7 +1117,8 @@ class Game {
 	}
 
 	/**
-	  * Description: Shifts to the left. Warning: Haven't implemented merging yet. 
+	  * Description: Moves all numbers to the right as much as they can. If two of
+	  *               
 	  */
 	method void moveLeft() {
 		// Iterate through every number in row1. 
@@ -1114,15 +1135,40 @@ class Game {
 		var int location, row, col, iterations;
 		// the number of iterations is important. if we do this for 160 times in a
 		// row, the game is lost. 
-		
-		while (true) {
+		let iterations = 0;
+		while (iterations < 160) {
+			// important: iterations!
+			let iterations = iterations + 1;
 			// always generates a value between 0 and 16, what we want it to be.
-
+			let location = Main.random();
 			// column must be less than 4 but otherwise is always equal to location. 
-
+			let col = Main.modulus(location, 4);
 			// row is always location/4. you can go check yourself. 
-
+			let row = location/4;
 			// now assign it! return if there's something available. 
+			if (row = 0) {
+				if (row1[col] = 0) {
+					let row1[col] = 2;
+					return;
+				}
+			} if (row = 1) {
+				if (row2[col] = 0) {
+					let row2[col] = 2;
+					return;
+				}
+			} if (row = 2) {
+				if (row3[col] = 0) {
+					let row3[col] = 2;
+					return;
+				}
+			} if (row = 3) {
+				if (row4[col] = 0) {
+					let row4[col] = 2;
+					return;
+				}
+			} 
 		}
+		let failed = true;
+		return;
 	}
 }
