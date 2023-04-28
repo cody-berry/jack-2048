@@ -5325,13 +5325,205 @@ function Game.convertRowsToCols 0
 push argument 0
 pop pointer 0
 push constant 0
+push this 8
+add
+push constant 0
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 9
+add
+push constant 1
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 10
+add
+push constant 2
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 11
+add
+push constant 3
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 8
+add
+push constant 0
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 9
+add
+push constant 1
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 10
+add
+push constant 2
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 11
+add
+push constant 3
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 8
+add
+push constant 0
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 9
+add
+push constant 1
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 10
+add
+push constant 2
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 11
+add
+push constant 3
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 8
+add
+push constant 0
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 9
+add
+push constant 1
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 10
+add
+push constant 2
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 11
+add
+push constant 3
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
 return
 function Game.moveLeft 0
 push argument 0
 pop pointer 0
 push constant 0
 return
-function Game.spawnRandomTwo 4
+function Game.spawnRandomFour 4
 push argument 0
 pop pointer 0
 push constant 0
@@ -5375,7 +5567,7 @@ label IF_TRUE1
 push local 2
 push this 4
 add
-push constant 2
+push constant 4
 pop temp 0
 pop pointer 1
 push temp 0
@@ -5403,7 +5595,7 @@ label IF_TRUE3
 push local 2
 push this 5
 add
-push constant 2
+push constant 4
 pop temp 0
 pop pointer 1
 push temp 0
@@ -5431,7 +5623,7 @@ label IF_TRUE5
 push local 2
 push this 6
 add
-push constant 2
+push constant 4
 pop temp 0
 pop pointer 1
 push temp 0
@@ -5459,7 +5651,7 @@ label IF_TRUE7
 push local 2
 push this 7
 add
-push constant 2
+push constant 4
 pop temp 0
 pop pointer 1
 push temp 0

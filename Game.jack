@@ -1115,21 +1115,28 @@ class Game {
 	  */
 	method void convertRowsToCols() {
 		// top-left corner: column 1, row 1. 
-
+		let col1[0] = row1[0];
 		// top row, middle-left column, or row 1, column 2. 
-
+		let col2[0] = row1[1];
 		// top row, middle-right column, or row 1, column 3. 
-
+		let col3[0] = row1[2];
 		// top-right corner: row 1, column 4. 
-
+		let col4[0] = row1[3];
 		// repeat for row 2. 
-
+		let col1[1] = row2[0];
+		let col2[1] = row2[1];
+		let col3[1] = row2[2];
+		let col4[1] = row2[3];
 		// repeat for row 3. 
-
+		let col1[2] = row3[0];
+		let col2[2] = row3[1];
+		let col3[2] = row3[2];
+		let col4[2] = row3[3];
 		// repeat for row 4. 
-
-		// if testing, print according to function description. 
-
+		let col1[3] = row4[0];
+		let col2[3] = row4[1];
+		let col3[3] = row4[2];
+		let col4[3] = row4[3];
 		return; // part of the language
 	}
 
@@ -1146,9 +1153,9 @@ class Game {
 	}
 
 	/** 
-	  * Description: Spawns a random two according to the Main.random() function. 
+	  * Description: Spawns a random four according to the Main.random() function. 
 	  */
-	method void spawnRandomTwo() {
+	method void spawnRandomFour() {
 		var int location, row, col, iterations;
 		// the number of iterations is important. if we do this for 160 times in a
 		// row, the game is lost. 
@@ -1165,22 +1172,22 @@ class Game {
 			// now assign it! return if there's something available. 
 			if (row = 0) {
 				if (row1[col] = 0) {
-					let row1[col] = 2;
+					let row1[col] = 4;
 					return;
 				}
 			} if (row = 1) {
 				if (row2[col] = 0) {
-					let row2[col] = 2;
+					let row2[col] = 4;
 					return;
 				}
 			} if (row = 2) {
 				if (row3[col] = 0) {
-					let row3[col] = 2;
+					let row3[col] = 4;
 					return;
 				}
 			} if (row = 3) {
 				if (row4[col] = 0) {
-					let row4[col] = 2;
+					let row4[col] = 4;
 					return;
 				}
 			} 

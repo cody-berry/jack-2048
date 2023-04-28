@@ -48,7 +48,7 @@ class Main {
 				
 				// Testing: R: Spawn a random 2.
 				if (key = 82) {
-					do game.spawnRandomTwo();
+					do game.spawnRandomFour();
 				}
 				// Display the game.
 				do game.display(); 
