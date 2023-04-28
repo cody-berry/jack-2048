@@ -12,7 +12,10 @@ push constant 32
 call Game.new 2
 pop local 0
 push local 0
-call Game.convertColsToRows 1
+call Game.spawnRandomNum 1
+pop temp 0
+push local 0
+call Game.spawnRandomNum 1
 pop temp 0
 push local 0
 call Game.display 1
@@ -47,7 +50,7 @@ if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push local 0
-call Game.spawnRandomNum 1
+call Game.setFailed 1
 pop temp 0
 label IF_FALSE0
 push local 0
@@ -125,6 +128,12 @@ push constant 32
 push constant 32
 call Game.new 2
 pop local 0
+push local 0
+call Game.spawnRandomNum 1
+pop temp 0
+push local 0
+call Game.spawnRandomNum 1
+pop temp 0
 push local 0
 call Game.display 1
 pop temp 0

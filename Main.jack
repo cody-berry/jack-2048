@@ -26,8 +26,9 @@ class Main {
 		 * testing arrow-key-related subjects. Use an square-dance-inspired
 		 * algorithm. 
 		 */
-		// testing: convert cols to rows. cols loaded up. 
-		do game.convertColsToRows();
+		// starter
+		do game.spawnRandomNum();
+		do game.spawnRandomNum();
 		// The game doesn't display immediately!
 		do game.display();
 		// In a While True loop...
@@ -48,9 +49,9 @@ class Main {
 	
 				// Down arrow: Call moveDown(). 
 				
-				// Testing: R: Spawn a random 2.
+				// R: Set failed to true. Use to retry the game. 
 				if (key = 82) {
-					do game.spawnRandomNum();
+					do game.setFailed();
 				}
 				// Display the game.
 				do game.display(); 
@@ -71,7 +72,10 @@ class Main {
 				// g: Make it so that the game has been restarted. 
 				if (key = 71) {
 					do game.dispose();
-					let game = Game.new(32, 32);
+					let game = Game.new(32, 32);		
+					// starter
+					do game.spawnRandomNum();
+					do game.spawnRandomNum();
 					do game.display();
 				}
 				// While the key is not 0, do nothing. 
