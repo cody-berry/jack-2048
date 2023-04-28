@@ -1141,6 +1141,33 @@ class Game {
 	}
 
 	/**
+	  * Description: Does what it is named for; converts the col representation
+	  *              with the row representation. 
+	  * Argument definition: None.
+	  */
+	method void convertColsToRows() {
+		// each pair in convertRowsToCols is setting the row representation to the 
+		// the column representation. swapping sides sets the column representation
+		// t the row representation. 
+		let row1[0] = col1[0];
+		let row1[1] = col2[0];
+		let row1[2] = col3[0];
+		let row1[3] = col4[0];
+		let row2[0] = col1[1];
+		let row2[1] = col2[1];
+		let row2[2] = col3[1];
+		let row2[3] = col4[1];
+		let row3[0] = col1[2];
+		let row3[1] = col2[2];
+		let row3[2] = col3[2];
+		let row3[3] = col4[2];
+		let row4[0] = col1[3];
+		let row4[1] = col2[3];
+		let row4[2] = col3[3];
+		let row4[3] = col4[3];
+	}
+
+	/**
 	  * Description: Moves all numbers to the right as much as they can. If two of
 	  *               
 	  */
@@ -1153,13 +1180,18 @@ class Game {
 	}
 
 	/** 
-	  * Description: Spawns a random four according to the Main.random() function. 
+	  * Description: Spawns a random 2 or 4 according to the Main.random() function. 
 	  */
-	method void spawnRandomFour() {
-		var int location, row, col, iterations;
+	method void spawnRandomNum() {
+		var int location, row, col, iterations, num;
 		// the number of iterations is important. if we do this for 160 times in a
 		// row, the game is lost. 
 		let iterations = 0;
+		// is the number that is spawned a 2 or a 4?
+		let num = 2;
+		if (Main.random() > 12) {
+			let num = 4;
+		}
 		while (iterations < 160) {
 			// important: iterations!
 			let iterations = iterations + 1;
@@ -1172,22 +1204,22 @@ class Game {
 			// now assign it! return if there's something available. 
 			if (row = 0) {
 				if (row1[col] = 0) {
-					let row1[col] = 4;
+					let row1[col] = num;
 					return;
 				}
 			} if (row = 1) {
 				if (row2[col] = 0) {
-					let row2[col] = 4;
+					let row2[col] = num;
 					return;
 				}
 			} if (row = 2) {
 				if (row3[col] = 0) {
-					let row3[col] = 4;
+					let row3[col] = num;
 					return;
 				}
 			} if (row = 3) {
 				if (row4[col] = 0) {
-					let row4[col] = 4;
+					let row4[col] = num;
 					return;
 				}
 			} 
