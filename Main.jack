@@ -26,6 +26,8 @@ class Main {
 		 * testing arrow-key-related subjects. Use an square-dance-inspired
 		 * algorithm. 
 		 */
+		// testing: convert cols to rows. cols loaded up. 
+		do game.convertColsToRows();
 		// The game doesn't display immediately!
 		do game.display();
 		// In a While True loop...
