@@ -27,8 +27,9 @@ class Main {
 		 * algorithm. 
 		 */
 		// starter
-		do game.spawnRandomNum();
-		do game.spawnRandomNum();
+		// commented out due to testing
+		// do game.spawnRandomNum();
+		// do game.spawnRandomNum();
 		// The game doesn't display immediately!
 		do game.display();
 		// In a While True loop...
@@ -42,12 +43,14 @@ class Main {
 				// Check the key. 
 				let key = Memory.peek(24576);
 				// Left arrow: Call moveLeft().
-	
-				// Right arrow: Call moveRight().
-	
+				if (key = 130) {
+					do game.moveLeft();
+				}
 				// Up arrow: Call moveUp().
 	
 				// Down arrow: Call moveDown(). 
+	
+				// Right arrow: Call moveRight().
 				
 				// R: Set failed to true. Use to retry the game. 
 				if (key = 82) {
@@ -74,8 +77,8 @@ class Main {
 					do game.dispose();
 					let game = Game.new(32, 32);		
 					// starter
-					do game.spawnRandomNum();
-					do game.spawnRandomNum();
+					// do game.spawnRandomNum();
+					// do game.spawnRandomNum();
 					do game.display();
 				}
 				// While the key is not 0, do nothing. 

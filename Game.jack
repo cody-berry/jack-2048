@@ -55,38 +55,38 @@ class Game {
 		}
 		// tests below. they set row1/row2/row3/row4/col1/col2/col3/col4
 		// to certain values and they test. 
-		// let row1[0] = 0;
-		// let row1[1] = 0;
-		// let row1[2] = 0;
-		// let row1[3] = 0;
-		// let row2[0] = 0;
-		// let row2[1] = 0;
-		// let row2[2] = 0;
-		// let row2[3] = 0;
-		// let row3[0] = 0;
-		// let row3[1] = 0;
-		// let row3[2] = 0;
-		// let row3[3] = 0;
-		// let row4[0] = 0;
-		// let row4[1] = 0;
-		// let row4[2] = 0;
-		// let row4[3] = 0;
-		let col1[0] = 16;
-		let col1[1] = 4;
-		let col1[2] = 4;
-		let col1[3] = 8;
-		let col2[0] = 32;
-		let col2[1] = 8;
-		let col2[2] = 8;
-		let col2[3] = 16;
-		let col3[0] = 64;
-		let col3[1] = 16;
-		let col3[2] = 16;
-		let col3[3] = 32;
-		let col4[0] = 128;
-		let col4[1] = 32;
-		let col4[2] = 32;
-		let col4[3] = 64;
+		let row1[0] = 2;
+		let row1[1] = 0;
+		let row1[2] = 0;
+		let row1[3] = 0;
+		let row2[0] = 0;
+		let row2[1] = 2;
+		let row2[2] = 0;
+		let row2[3] = 0;
+		let row3[0] = 0;
+		let row3[1] = 0;
+		let row3[2] = 2;
+		let row3[3] = 0;
+		let row4[0] = 0;
+		let row4[1] = 0;
+		let row4[2] = 0;
+		let row4[3] = 2;
+		// let col1[0] = 16;
+		// let col1[1] = 4;
+		// let col1[2] = 4;
+		// let col1[3] = 8;
+		// let col2[0] = 32;
+		// let col2[1] = 8;
+		// let col2[2] = 8;
+		// let col2[3] = 16;
+		// let col3[0] = 64;
+		// let col3[1] = 16;
+		// let col3[2] = 16;
+		// let col3[3] = 32;
+		// let col4[0] = 128;
+		// let col4[1] = 32;
+		// let col4[2] = 32;
+		// let col4[3] = 64;
 		// spawn 2 random 2s/4s
 
 		return this; // part of the language
@@ -1171,12 +1171,21 @@ class Game {
 
 	/**
 	  * Description: Moves all numbers to the right as much as they can. If two of
-	  *               
+	  *              the numbers collide with eachother, they stop at each other. If
+	  *              two of the same numbers collide with eachother, they merge. 
 	  */
 	method void moveLeft() {
-		// Iterate through every number in row1. 
+		// i should be 1. it represents the index of the access for row. (doesn't
+		// include 0 because there's nothing to merge or slide into)
 
-		// In progress. 
+		// only iterate if i is in the indices of row. 
+
+			// check if the number is non-zero.
+
+				// if it is, then you can move it all the way to the left.
+				// to prepare for the next step, move in iterations.
+
+
 
 		return; // part of the language
 	}
