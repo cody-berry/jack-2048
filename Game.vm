@@ -123,7 +123,7 @@ pop that 0
 push constant 1
 push this 4
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -147,7 +147,7 @@ pop that 0
 push constant 0
 push this 5
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -155,7 +155,7 @@ pop that 0
 push constant 1
 push this 5
 add
-push constant 2
+push constant 0
 pop temp 0
 pop pointer 1
 push temp 0
@@ -171,7 +171,7 @@ pop that 0
 push constant 3
 push this 5
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -203,7 +203,7 @@ pop that 0
 push constant 3
 push this 6
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -219,7 +219,7 @@ pop that 0
 push constant 1
 push this 7
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -5879,17 +5879,26 @@ push constant 1
 sub
 pop local 1
 push local 1
+push this 4
+add
+pop pointer 1
+push that 0
 push constant 0
 eq
+not
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push constant 0
 not
 pop local 2
-label IF_FALSE1
-goto WHILE_EXP1
-label WHILE_END1
+push local 1
+push constant 1
+add
+pop local 1
+push local 1
+call Output.printInt 1
+pop temp 0
 push local 1
 push this 4
 add
@@ -5910,6 +5919,42 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+label IF_FALSE1
+push local 1
+push constant 0
+eq
+push local 2
+not
+and
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+not
+pop local 2
+push local 1
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 4
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE2
+goto WHILE_EXP1
+label WHILE_END1
 label IF_FALSE0
 push local 0
 push constant 1
@@ -5937,9 +5982,9 @@ push that 0
 push constant 0
 eq
 not
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push local 0
 pop local 1
 label WHILE_EXP3
@@ -5952,17 +5997,26 @@ push constant 1
 sub
 pop local 1
 push local 1
+push this 5
+add
+pop pointer 1
+push that 0
 push constant 0
 eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+not
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
 push constant 0
 not
 pop local 2
-label IF_FALSE3
-goto WHILE_EXP3
-label WHILE_END3
+push local 1
+push constant 1
+add
+pop local 1
+push local 1
+call Output.printInt 1
+pop temp 0
 push local 1
 push this 5
 add
@@ -5983,7 +6037,43 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE2
+label IF_FALSE4
+push local 1
+push constant 0
+eq
+push local 2
+not
+and
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+not
+pop local 2
+push local 1
+push this 5
+add
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 5
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE5
+goto WHILE_EXP3
+label WHILE_END3
+label IF_FALSE3
 push local 0
 push constant 1
 add
@@ -6010,9 +6100,9 @@ push that 0
 push constant 0
 eq
 not
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push local 0
 pop local 1
 label WHILE_EXP5
@@ -6025,17 +6115,26 @@ push constant 1
 sub
 pop local 1
 push local 1
+push this 6
+add
+pop pointer 1
+push that 0
 push constant 0
 eq
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
+not
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
 push constant 0
 not
 pop local 2
-label IF_FALSE5
-goto WHILE_EXP5
-label WHILE_END5
+push local 1
+push constant 1
+add
+pop local 1
+push local 1
+call Output.printInt 1
+pop temp 0
 push local 1
 push this 6
 add
@@ -6056,7 +6155,43 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE4
+label IF_FALSE7
+push local 1
+push constant 0
+eq
+push local 2
+not
+and
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 0
+not
+pop local 2
+push local 1
+push this 6
+add
+push local 0
+push this 6
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 6
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE8
+goto WHILE_EXP5
+label WHILE_END5
+label IF_FALSE6
 push local 0
 push constant 1
 add
@@ -6083,9 +6218,9 @@ push that 0
 push constant 0
 eq
 not
-if-goto IF_TRUE6
-goto IF_FALSE6
-label IF_TRUE6
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
 push local 0
 pop local 1
 label WHILE_EXP7
@@ -6098,17 +6233,26 @@ push constant 1
 sub
 pop local 1
 push local 1
+push this 7
+add
+pop pointer 1
+push that 0
 push constant 0
 eq
-if-goto IF_TRUE7
-goto IF_FALSE7
-label IF_TRUE7
+not
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
 push constant 0
 not
 pop local 2
-label IF_FALSE7
-goto WHILE_EXP7
-label WHILE_END7
+push local 1
+push constant 1
+add
+pop local 1
+push local 1
+call Output.printInt 1
+pop temp 0
 push local 1
 push this 7
 add
@@ -6129,7 +6273,43 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE6
+label IF_FALSE10
+push local 1
+push constant 0
+eq
+push local 2
+not
+and
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push constant 0
+not
+pop local 2
+push local 1
+push this 7
+add
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 7
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE11
+goto WHILE_EXP7
+label WHILE_END7
+label IF_FALSE9
 push local 0
 push constant 1
 add
