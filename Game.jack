@@ -1175,18 +1175,95 @@ class Game {
 	  *              two of the same numbers collide with eachother, they merge. 
 	  */
 	method void moveLeft() {
+		var int i, j;
+		var boolean exit;
 		// i should be 1. it represents the index of the access for row. (doesn't
 		// include 0 because there's nothing to merge or slide into)
-
+		let i = 1;
 		// only iterate if i is in the indices of row. 
-
+		while (i < 4) {
+			let exit = false;
 			// check if the number is non-zero.
-
+			if (~(row1[i] = 0)) {
 				// if it is, then you can move it all the way to the left.
 				// to prepare for the next step, move in iterations.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					if (j = 0) {
+						let exit = true;
+					}
+				}
+				let row1[j] = row1[i];
+				let row1[i] = 0;
+			}
+			let i = i + 1;
+		}
+		// repeat for the other rows. 
+		let i = 1;
+		let exit = false;
+		// only iterate if i is in the indices of row. 
+		while (i < 4) {
+			let exit = false;
+			// check if the number is non-zero.
+			if (~(row2[i] = 0)) {
+				// if it is, then you can move it all the way to the left.
+				// to prepare for the next step, move in iterations.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					if (j = 0) {
+						let exit = true;
+					}
+				}
+				let row2[j] = row2[i];
+				let row2[i] = 0;
+			}
+			let i = i + 1;
+		}
 
-
-
+		let i = 1;
+		let exit = false;
+		// only iterate if i is in the indices of row. 
+		while (i < 4) {
+			let exit = false;
+			// check if the number is non-zero.
+			if (~(row3[i] = 0)) {
+				// if it is, then you can move it all the way to the left.
+				// to prepare for the next step, move in iterations.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					if (j = 0) {
+						let exit = true;
+					}
+				}
+				let row3[j] = row3[i];
+				let row3[i] = 0;
+			}
+			let i = i + 1;
+		}
+		let i = 1;
+		let exit = false;
+		// only iterate if i is in the indices of row. 
+		while (i < 4) {
+			let exit = false;
+			// check if the number is non-zero.
+			if (~(row4[i] = 0)) {
+				// if it is, then you can move it all the way to the left.
+				// to prepare for the next step, move in iterations.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					if (j = 0) {
+						let exit = true;
+					}
+				}
+				let row4[j] = row4[i];
+				let row4[i] = 0;
+			}
+			let i = i + 1;
+		}
 		return; // part of the language
 	}
 
