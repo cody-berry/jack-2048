@@ -49,15 +49,17 @@ class Main {
 				}
 				// Up arrow: Call moveUp().
 				if (key = 131) {
-					do game.slideUp();
-					do game.convertColsToRows();
+					do game.moveUp();
 				}
 				// Right arrow: Call moveRight().
 				if (key = 132) {
 					do game.moveRight();
 				}
 				// Down arrow: Call moveDown(). 
-
+				if (key = 133) {
+					do game.slideDown();
+					do game.convertColsToRows();
+				}
 				// R: Set failed to true. Use to retry the game. 
 				if (key = 82) {
 					do game.setFailed();

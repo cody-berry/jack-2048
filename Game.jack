@@ -1574,6 +1574,126 @@ class Game {
 		}
 		return; // part of the language
 	}
+	/**
+	  * Description: Merges vertically adjacent pairs of the same number. 
+	  */
+	method void mergeVertical() {
+		var int i;
+		
+		let i = 0; // this represents the pair of row1[0] and row1[1]
+		while (i < 3) { // i = 3 represents row[3] and row[4], not existent
+			// each row!
+			// row 1
+			if (col1[i] = col1[i+1]) {
+				let col1[i] = col1[i]*2;
+				let col1[i + 1] = 0;
+			}
+			// row 2
+			if (col2[i] = col2[i+1]) {
+				let col2[i] = col2[i]*2;
+				let col2[i + 1] = 0;
+			}
+			// row 3
+			if (col3[i] = col3[i+1]) {
+				let col3[i] = col3[i]*2;
+				let col3[i + 1] = 0;
+			}
+			// row 4
+			if (col4[i] = col4[i+1]) {
+				let col4[i] = col4[i]*2;
+				let col4[i + 1] = 0;
+			}
+			let i = i + 1;
+		}
+		return; // part of the language		
+	}
+	/**
+	  * Description: Replicates the up command in the real 2048 app.
+	  */
+	method void moveUp() {
+		do slideUp();
+		do mergeVertical();
+		do slideUp();
+		do convertColsToRows();
+		return; // part of the language
+	}
+
+	/**
+	  * Description: Slides each number to the bottom as much as they can.
+	  */
+	method void slideDown() {
+		var int i, temp, nextResult;
+		// Although it might seem unintuitive, slideLeft() to clump the numbers.
+		do slideLeft();
+
+		// row 1
+		// figure out the index of the number most to the right
+		let i = 3;
+		while (~col1[i] & ((i = 0) | (i > 0))) {
+			let i = i - 1;
+		}
+		// the index of the resulting position of the last number - 1
+		let nextResult = 3;
+		// decrement i until it reaches 0, putting each number as the last unfilled
+		// number
+		while ((i = 0) | (i > 0)) {
+			let temp = col1[i];
+			let col1[i] = 0;
+			let col1[nextResult] = temp;
+			let i = i - 1;
+			let nextResult = nextResult - 1;
+		}
+		// repeat for row two and beyond
+		// figure out the index of the number most to the right
+		let i = 3;
+		while (~col2[i] & ((i = 0) | (i > 0))) {
+			let i = i - 1;
+		}
+		// the index of the resulting position of the last number - 1
+		let nextResult = 3;
+		// decrement i until it reaches 0, putting each number as the last unfilled
+		// number
+		while ((i = 0) | (i > 0)) {
+			let temp = col2[i];
+			let col2[i] = 0;
+			let col2[nextResult] = temp;
+			let i = i - 1;
+			let nextResult = nextResult - 1;
+		}
+		// figure out the index of the number most to the right
+		let i = 3;
+		while (~col3[i] & ((i = 0) | (i > 0))) {
+			let i = i - 1;
+		}
+		// the index of the resulting position of the last number - 1
+		let nextResult = 3;
+		// decrement i until it reaches 0, putting each number as the last unfilled
+		// number
+		while ((i = 0) | (i > 0)) {
+			let temp = col3[i];
+			let col3[i] = 0;
+			let col3[nextResult] = temp;
+			let i = i - 1;
+			let nextResult = nextResult - 1;
+		}
+		// figure out the index of the number most to the right
+		let i = 3;
+		while (~col4[i] & ((i = 0) | (i > 0))) {
+			let i = i - 1;
+		}
+		// the index of the resulting position of the last number - 1
+		let nextResult = 3;
+		// decrement i until it reaches 0, putting each number as the last unfilled
+		// number
+		while ((i = 0) | (i > 0)) {
+			let temp = col4[i];
+			let col4[i] = 0;
+			let col4[nextResult] = temp;
+			let i = i - 1;
+			let nextResult = nextResult - 1;
+		}
+		return; // part of the language
+	}
 
 	/** 
 	  * Description: Spawns a random 2 or 4 according to the Main.random() function

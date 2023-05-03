@@ -57,10 +57,7 @@ if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push local 0
-call Game.slideUp 1
-pop temp 0
-push local 0
-call Game.convertColsToRows 1
+call Game.moveUp 1
 pop temp 0
 label IF_FALSE1
 push local 1
@@ -74,15 +71,28 @@ call Game.moveRight 1
 pop temp 0
 label IF_FALSE2
 push local 1
-push constant 82
+push constant 133
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 push local 0
-call Game.setFailed 1
+call Game.slideDown 1
+pop temp 0
+push local 0
+call Game.convertColsToRows 1
 pop temp 0
 label IF_FALSE3
+push local 1
+push constant 82
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
+call Game.setFailed 1
+pop temp 0
+label IF_FALSE4
 push local 0
 call Game.display 1
 pop temp 0
@@ -148,9 +158,9 @@ pop local 1
 push local 1
 push constant 71
 eq
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
 push local 0
 call Game.dispose 1
 pop temp 0
@@ -161,7 +171,7 @@ pop local 0
 push local 0
 call Game.display 1
 pop temp 0
-label IF_FALSE4
+label IF_FALSE5
 label WHILE_EXP6
 push constant 24576
 call Memory.peek 1
