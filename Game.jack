@@ -1765,4 +1765,49 @@ class Game {
 		do convertRowsToCols();
 		return;
 	}
+
+	/**
+	  * Description: Configures the rows and columns to the specified arguments.
+	  */
+	method void configureState(Array row1Arg, Array row2Arg, Array row3Arg, 
+		                       Array row4Arg) {
+		let row1[0] = row1Arg[0];
+		let row1[1] = row1Arg[1];
+		let row1[2] = row1Arg[2];
+		let row1[3] = row1Arg[3];
+		let row2[0] = row2Arg[0];
+		let row2[1] = row2Arg[1];
+		let row2[2] = row2Arg[2];
+		let row2[3] = row2Arg[3];
+		let row3[0] = row3Arg[0];
+		let row3[1] = row3Arg[1];
+		let row3[2] = row3Arg[2];
+		let row3[3] = row3Arg[3];
+		let row4[0] = row4Arg[0];
+		let row4[1] = row4Arg[1];
+		let row4[2] = row4Arg[2];
+		let row4[3] = row4Arg[3];
+		do convertRowsToCols();
+		return;
+	}
+
+	/**
+	  * Description: Sets the score to a certain amouint. Note: Only use for
+	  *              copying the game. Do not use otherwise.
+	  */
+	method void setScore(int scoreArg) {
+		let score = scoreArg;
+		return;
+	}
+
+	/**
+	  * Description: Creates a copy of the current game and returns it.
+	  */
+	method Game copy() {
+		var Game copy;
+		let copy = Game.new(32, 32);
+		do copy.configureState(row1, row2, row3, row4);
+		do copy.setScore(score);
+		return copy;
+	}
 }
