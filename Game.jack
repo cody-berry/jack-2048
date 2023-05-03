@@ -1695,6 +1695,17 @@ class Game {
 		return; // part of the language
 	}
 
+	/**
+	  * Description: Replicates the down command in the real 2048 app.
+	  */
+	method void moveDown() {
+		do slideDown();
+		do mergeVertical();
+		do slideDown();
+		do convertColsToRows();
+		return; // part of the language
+	}
+
 	/** 
 	  * Description: Spawns a random 2 or 4 according to the Main.random() function
 	  */

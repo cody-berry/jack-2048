@@ -57,8 +57,7 @@ class Main {
 				}
 				// Down arrow: Call moveDown(). 
 				if (key = 133) {
-					do game.slideDown();
-					do game.convertColsToRows();
+					do game.moveDown();
 				}
 				// R: Set failed to true. Use to retry the game. 
 				if (key = 82) {

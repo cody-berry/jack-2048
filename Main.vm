@@ -77,10 +77,7 @@ if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 push local 0
-call Game.slideDown 1
-pop temp 0
-push local 0
-call Game.convertColsToRows 1
+call Game.moveDown 1
 pop temp 0
 label IF_FALSE3
 push local 1
