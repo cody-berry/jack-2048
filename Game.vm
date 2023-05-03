@@ -6322,6 +6322,290 @@ goto WHILE_EXP6
 label WHILE_END6
 push constant 0
 return
+function Game.slideRight 3
+push argument 0
+pop pointer 0
+push pointer 0
+call Game.slideLeft 1
+pop temp 0
+push constant 3
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+not
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+and
+not
+if-goto WHILE_END0
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 3
+pop local 2
+label WHILE_EXP1
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+not
+if-goto WHILE_END1
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 0
+push this 4
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+push this 4
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+sub
+pop local 0
+push local 2
+push constant 1
+sub
+pop local 2
+goto WHILE_EXP1
+label WHILE_END1
+push constant 3
+pop local 0
+label WHILE_EXP2
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+not
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+and
+not
+if-goto WHILE_END2
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP2
+label WHILE_END2
+push constant 3
+pop local 2
+label WHILE_EXP3
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+not
+if-goto WHILE_END3
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 0
+push this 5
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+push this 5
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+sub
+pop local 0
+push local 2
+push constant 1
+sub
+pop local 2
+goto WHILE_EXP3
+label WHILE_END3
+push constant 3
+pop local 0
+label WHILE_EXP4
+push local 0
+push this 6
+add
+pop pointer 1
+push that 0
+not
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+and
+not
+if-goto WHILE_END4
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP4
+label WHILE_END4
+push constant 3
+pop local 2
+label WHILE_EXP5
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+not
+if-goto WHILE_END5
+push local 0
+push this 6
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 0
+push this 6
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+push this 6
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+sub
+pop local 0
+push local 2
+push constant 1
+sub
+pop local 2
+goto WHILE_EXP5
+label WHILE_END5
+push constant 3
+pop local 0
+label WHILE_EXP6
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+not
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+and
+not
+if-goto WHILE_END6
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP6
+label WHILE_END6
+push constant 3
+pop local 2
+label WHILE_EXP7
+push local 0
+push constant 0
+eq
+push local 0
+push constant 0
+gt
+or
+not
+if-goto WHILE_END7
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 0
+push this 7
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+push this 7
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+sub
+pop local 0
+push local 2
+push constant 1
+sub
+pop local 2
+goto WHILE_EXP7
+label WHILE_END7
+push constant 0
+return
 function Game.mergeHorizontal 1
 push argument 0
 pop pointer 0
@@ -6516,6 +6800,20 @@ call Game.mergeHorizontal 1
 pop temp 0
 push pointer 0
 call Game.slideLeft 1
+pop temp 0
+push constant 0
+return
+function Game.moveRight 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Game.slideRight 1
+pop temp 0
+push pointer 0
+call Game.mergeHorizontal 1
+pop temp 0
+push pointer 0
+call Game.slideRight 1
 pop temp 0
 push constant 0
 return

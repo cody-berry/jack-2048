@@ -47,11 +47,13 @@ class Main {
 					do game.moveLeft();
 				}
 				// Up arrow: Call moveUp().
-	
-				// Down arrow: Call moveDown(). 
-	
+
 				// Right arrow: Call moveRight().
-				
+				if (key = 132) {
+					do game.moveRight();
+				}
+				// Down arrow: Call moveDown(). 
+
 				// R: Set failed to true. Use to retry the game. 
 				if (key = 82) {
 					do game.setFailed();
