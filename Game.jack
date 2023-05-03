@@ -59,18 +59,18 @@ class Game {
 		let row1[1] = 2;
 		let row1[2] = 0;
 		let row1[3] = 0;
-		let row2[0] = 2;
+		let row2[0] = 0;
 		let row2[1] = 0;
-		let row2[2] = 0;
+		let row2[2] = 2;
 		let row2[3] = 2;
-		let row3[0] = 0;
+		let row3[0] = 2;
 		let row3[1] = 0;
-		let row3[2] = 2;
-		let row3[3] = 2;
-		let row4[0] = 0;
+		let row3[2] = 0;
+		let row3[3] = 4;
+		let row4[0] = 2;
 		let row4[1] = 2;
-		let row4[2] = 0;
-		let row4[3] = 2;
+		let row4[2] = 4;
+		let row4[3] = 0;
 		// let col1[0] = 16;
 		// let col1[1] = 4;
 		// let col1[2] = 4;
@@ -1170,15 +1170,14 @@ class Game {
 	}
 
 	/**
-	  * Description: Moves all numbers to the right as much as they can. If two of
-	  *              the numbers collide with eachother, they stop at each other. If
-	  *              two of the same numbers collide with eachother, they merge. 
+	  * Description: Moves all numbers to the left as much as they can. If two of
+	  *              the numbers collide with eachother, they stop at each other. 
 	  */
-	method void moveLeft() {
-		var int i, j;
+	method void slideLeft() {
+		var int i, j, temp;
 		var boolean exit;
 		// i should be 1. it represents the index of the access for row. (doesn't
-		// include 0 because there's nothing to merge or slide into)
+		// include 0 because there's nothing to slide into)
 		let i = 1;
 		// only iterate if i is in the indices of row. 
 		while (i < 4) {
@@ -1194,15 +1193,16 @@ class Game {
 					if (~(row1[j] = 0)) {
 						let exit = true;
 						let j = j + 1;
-						do Output.printInt(j);
-						let row1[j] = row1[i];
+						let temp = row1[i];
 						let row1[i] = 0;
+						let row1[j] = temp;
 					}
 					// case 2: it hits all the way to the left.
 					if ((j = 0) & ~exit) {
 						let exit = true;
-						let row1[j] = row1[i];
+						let temp = row1[i];
 						let row1[i] = 0;
+						let row1[j] = temp;
 					}
 				}
 			}
@@ -1225,15 +1225,16 @@ class Game {
 					if (~(row2[j] = 0)) {
 						let exit = true;
 						let j = j + 1;
-						do Output.printInt(j);
-						let row2[j] = row2[i];
+						let temp = row2[i];
 						let row2[i] = 0;
+						let row2[j] = temp;
 					}
 					// case 2: it hits all the way to the left.
 					if ((j = 0) & ~exit) {
 						let exit = true;
-						let row2[j] = row2[i];
+						let temp = row2[i];
 						let row2[i] = 0;
+						let row2[j] = temp;
 					}
 				}
 			}
@@ -1256,15 +1257,16 @@ class Game {
 					if (~(row3[j] = 0)) {
 						let exit = true;
 						let j = j + 1;
-						do Output.printInt(j);
-						let row3[j] = row3[i];
+						let temp = row3[i];
 						let row3[i] = 0;
+						let row3[j] = temp;
 					}
 					// case 2: it hits all the way to the left.
 					if ((j = 0) & ~exit) {
 						let exit = true;
-						let row3[j] = row3[i];
+						let temp = row3[i];
 						let row3[i] = 0;
+						let row3[j] = temp;
 					}
 				}
 			}
@@ -1286,20 +1288,65 @@ class Game {
 					if (~(row4[j] = 0)) {
 						let exit = true;
 						let j = j + 1;
-						do Output.printInt(j);
-						let row4[j] = row4[i];
+						let temp = row4[i];
 						let row4[i] = 0;
+						let row4[j] = temp;
 					}
 					// case 2: it hits all the way to the left.
 					if ((j = 0) & ~exit) {
 						let exit = true;
-						let row4[j] = row4[i];
+						let temp = row4[i];
 						let row4[i] = 0;
+						let row4[j] = temp;
 					}
 				}
 			}
 			let i = i + 1;
 		}
+		return; // part of the language
+	}
+
+	/** 
+	  * Description: Merges any pair of horizontally adjacent numbers. 
+	  */
+	method void mergeHorizontal() {
+		var int i;
+		
+		let i = 0; // this represents the pair of row1[0] and row1[1]
+		while (i < 3) { // i = 3 represents row[3] and row[4], not existent
+			// each row!
+			// row 1
+			if (row1[i] = row1[i+1]) {
+				let row1[i] = row1[i]*2;
+				let row1[i + 1] = 0;
+			}
+			// row 2
+			if (row2[i] = row2[i+1]) {
+				let row2[i] = row2[i]*2;
+				let row2[i + 1] = 0;
+			}
+			// row 3
+			if (row3[i] = row3[i+1]) {
+				let row3[i] = row3[i]*2;
+				let row3[i + 1] = 0;
+			}
+			// row 4
+			if (row4[i] = row4[i+1]) {
+				let row4[i] = row4[i]*2;
+				let row4[i + 1] = 0;
+			}
+			let i = i + 1;
+		}
+		return; // part of the language
+	}
+
+	/**
+	  * Description: Replicates the left command on the real 2048 app. 
+	  */
+	method void moveLeft() {
+		do slideLeft();
+		do mergeHorizontal();
+		do slideLeft();
 		return; // part of the language
 	}
 

@@ -147,7 +147,7 @@ pop that 0
 push constant 0
 push this 5
 add
-push constant 2
+push constant 0
 pop temp 0
 pop pointer 1
 push temp 0
@@ -163,7 +163,7 @@ pop that 0
 push constant 2
 push this 5
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -179,7 +179,7 @@ pop that 0
 push constant 0
 push this 6
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -195,7 +195,7 @@ pop that 0
 push constant 2
 push this 6
 add
-push constant 2
+push constant 0
 pop temp 0
 pop pointer 1
 push temp 0
@@ -203,7 +203,7 @@ pop that 0
 push constant 3
 push this 6
 add
-push constant 2
+push constant 4
 pop temp 0
 pop pointer 1
 push temp 0
@@ -211,7 +211,7 @@ pop that 0
 push constant 0
 push this 7
 add
-push constant 0
+push constant 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -227,7 +227,7 @@ pop that 0
 push constant 2
 push this 7
 add
-push constant 0
+push constant 4
 pop temp 0
 pop pointer 1
 push temp 0
@@ -235,7 +235,7 @@ pop that 0
 push constant 3
 push this 7
 add
-push constant 2
+push constant 0
 pop temp 0
 pop pointer 1
 push temp 0
@@ -5843,7 +5843,7 @@ push temp 0
 pop that 0
 push constant 0
 return
-function Game.moveLeft 3
+function Game.slideLeft 4
 push argument 0
 pop pointer 0
 push constant 1
@@ -5855,7 +5855,7 @@ lt
 not
 if-goto WHILE_END0
 push constant 0
-pop local 2
+pop local 3
 push local 0
 push this 4
 add
@@ -5870,7 +5870,7 @@ label IF_TRUE0
 push local 0
 pop local 1
 label WHILE_EXP1
-push local 2
+push local 3
 not
 not
 if-goto WHILE_END1
@@ -5891,30 +5891,29 @@ goto IF_FALSE1
 label IF_TRUE1
 push constant 0
 not
-pop local 2
+pop local 3
 push local 1
 push constant 1
 add
 pop local 1
-push local 1
-call Output.printInt 1
-pop temp 0
-push local 1
-push this 4
-add
 push local 0
 push this 4
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 4
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 4
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -5923,7 +5922,7 @@ label IF_FALSE1
 push local 1
 push constant 0
 eq
-push local 2
+push local 3
 not
 and
 if-goto IF_TRUE2
@@ -5931,23 +5930,25 @@ goto IF_FALSE2
 label IF_TRUE2
 push constant 0
 not
-pop local 2
-push local 1
-push this 4
-add
+pop local 3
 push local 0
 push this 4
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 4
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 4
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -5965,7 +5966,7 @@ label WHILE_END0
 push constant 1
 pop local 0
 push constant 0
-pop local 2
+pop local 3
 label WHILE_EXP2
 push local 0
 push constant 4
@@ -5973,7 +5974,7 @@ lt
 not
 if-goto WHILE_END2
 push constant 0
-pop local 2
+pop local 3
 push local 0
 push this 5
 add
@@ -5988,7 +5989,7 @@ label IF_TRUE3
 push local 0
 pop local 1
 label WHILE_EXP3
-push local 2
+push local 3
 not
 not
 if-goto WHILE_END3
@@ -6009,30 +6010,29 @@ goto IF_FALSE4
 label IF_TRUE4
 push constant 0
 not
-pop local 2
+pop local 3
 push local 1
 push constant 1
 add
 pop local 1
-push local 1
-call Output.printInt 1
-pop temp 0
-push local 1
-push this 5
-add
 push local 0
 push this 5
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 5
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 5
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -6041,7 +6041,7 @@ label IF_FALSE4
 push local 1
 push constant 0
 eq
-push local 2
+push local 3
 not
 and
 if-goto IF_TRUE5
@@ -6049,23 +6049,25 @@ goto IF_FALSE5
 label IF_TRUE5
 push constant 0
 not
-pop local 2
-push local 1
-push this 5
-add
+pop local 3
 push local 0
 push this 5
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 5
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 5
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -6083,7 +6085,7 @@ label WHILE_END2
 push constant 1
 pop local 0
 push constant 0
-pop local 2
+pop local 3
 label WHILE_EXP4
 push local 0
 push constant 4
@@ -6091,7 +6093,7 @@ lt
 not
 if-goto WHILE_END4
 push constant 0
-pop local 2
+pop local 3
 push local 0
 push this 6
 add
@@ -6106,7 +6108,7 @@ label IF_TRUE6
 push local 0
 pop local 1
 label WHILE_EXP5
-push local 2
+push local 3
 not
 not
 if-goto WHILE_END5
@@ -6127,30 +6129,29 @@ goto IF_FALSE7
 label IF_TRUE7
 push constant 0
 not
-pop local 2
+pop local 3
 push local 1
 push constant 1
 add
 pop local 1
-push local 1
-call Output.printInt 1
-pop temp 0
-push local 1
-push this 6
-add
 push local 0
 push this 6
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 6
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 6
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -6159,7 +6160,7 @@ label IF_FALSE7
 push local 1
 push constant 0
 eq
-push local 2
+push local 3
 not
 and
 if-goto IF_TRUE8
@@ -6167,23 +6168,25 @@ goto IF_FALSE8
 label IF_TRUE8
 push constant 0
 not
-pop local 2
-push local 1
-push this 6
-add
+pop local 3
 push local 0
 push this 6
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 6
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 6
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -6201,7 +6204,7 @@ label WHILE_END4
 push constant 1
 pop local 0
 push constant 0
-pop local 2
+pop local 3
 label WHILE_EXP6
 push local 0
 push constant 4
@@ -6209,7 +6212,7 @@ lt
 not
 if-goto WHILE_END6
 push constant 0
-pop local 2
+pop local 3
 push local 0
 push this 7
 add
@@ -6224,7 +6227,7 @@ label IF_TRUE9
 push local 0
 pop local 1
 label WHILE_EXP7
-push local 2
+push local 3
 not
 not
 if-goto WHILE_END7
@@ -6245,30 +6248,29 @@ goto IF_FALSE10
 label IF_TRUE10
 push constant 0
 not
-pop local 2
+pop local 3
 push local 1
 push constant 1
 add
 pop local 1
-push local 1
-call Output.printInt 1
-pop temp 0
-push local 1
-push this 7
-add
 push local 0
 push this 7
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 7
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 7
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -6277,7 +6279,7 @@ label IF_FALSE10
 push local 1
 push constant 0
 eq
-push local 2
+push local 3
 not
 and
 if-goto IF_TRUE11
@@ -6285,23 +6287,25 @@ goto IF_FALSE11
 label IF_TRUE11
 push constant 0
 not
-pop local 2
-push local 1
-push this 7
-add
+pop local 3
 push local 0
 push this 7
 add
 pop pointer 1
 push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+pop local 2
 push local 0
 push this 7
 add
 push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push this 7
+add
+push local 2
 pop temp 0
 pop pointer 1
 push temp 0
@@ -6316,6 +6320,203 @@ add
 pop local 0
 goto WHILE_EXP6
 label WHILE_END6
+push constant 0
+return
+function Game.mergeHorizontal 1
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 3
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 4
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 4
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE0
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 5
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push this 5
+add
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 5
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE1
+push local 0
+push this 6
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 6
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push this 6
+add
+push local 0
+push this 6
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 6
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE2
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 7
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push this 7
+add
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 7
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE3
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Game.moveLeft 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Game.slideLeft 1
+pop temp 0
+push pointer 0
+call Game.mergeHorizontal 1
+pop temp 0
+push pointer 0
+call Game.slideLeft 1
+pop temp 0
 push constant 0
 return
 function Game.spawnRandomNum 5
