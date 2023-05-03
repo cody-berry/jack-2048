@@ -15,6 +15,12 @@ push local 0
 call Game.convertRowsToCols 1
 pop temp 0
 push local 0
+call Game.spawnRandomNum 1
+pop temp 0
+push local 0
+call Game.spawnRandomNum 1
+pop temp 0
+push local 0
 call Game.display 1
 pop temp 0
 label WHILE_EXP0
@@ -165,6 +171,12 @@ push constant 32
 push constant 32
 call Game.new 2
 pop local 0
+push local 0
+call Game.spawnRandomNum 1
+pop temp 0
+push local 0
+call Game.spawnRandomNum 1
+pop temp 0
 push local 0
 call Game.display 1
 pop temp 0

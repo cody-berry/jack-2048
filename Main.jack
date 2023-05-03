@@ -28,9 +28,8 @@ class Main {
 		 * algorithm. 
 		 */
 		// starter
-		// commented out due to testing
-		// do game.spawnRandomNum();
-		// do game.spawnRandomNum();
+		do game.spawnRandomNum();
+		do game.spawnRandomNum();
 		// The game doesn't display immediately!
 		do game.display();
 		// In a While True loop...
@@ -84,8 +83,8 @@ class Main {
 					do game.dispose();
 					let game = Game.new(32, 32);		
 					// starter
-					// do game.spawnRandomNum();
-					// do game.spawnRandomNum();
+					do game.spawnRandomNum();
+					do game.spawnRandomNum();
 					do game.display();
 				}
 				// While the key is not 0, do nothing. 

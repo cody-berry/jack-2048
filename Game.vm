@@ -112,134 +112,6 @@ add
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
-push constant 0
-push this 4
-add
-push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 1
-push this 4
-add
-push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 2
-push this 4
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 3
-push this 4
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 0
-push this 5
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 1
-push this 5
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 2
-push this 5
-add
-push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 3
-push this 5
-add
-push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 0
-push this 6
-add
-push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 1
-push this 6
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 2
-push this 6
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 3
-push this 6
-add
-push constant 4
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 0
-push this 7
-add
-push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 1
-push this 7
-add
-push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 2
-push this 7
-add
-push constant 4
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 3
-push this 7
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
 push pointer 0
 return
 function Game.dispose 0
@@ -6802,6 +6674,9 @@ push pointer 0
 call Game.slideLeft 1
 pop temp 0
 push pointer 0
+call Game.spawnRandomNum 1
+pop temp 0
+push pointer 0
 call Game.convertRowsToCols 1
 pop temp 0
 push constant 0
@@ -6817,6 +6692,9 @@ call Game.mergeHorizontal 1
 pop temp 0
 push pointer 0
 call Game.slideRight 1
+pop temp 0
+push pointer 0
+call Game.spawnRandomNum 1
 pop temp 0
 push pointer 0
 call Game.convertRowsToCols 1
@@ -7498,7 +7376,16 @@ push pointer 0
 call Game.slideUp 1
 pop temp 0
 push pointer 0
+call Game.display 1
+pop temp 0
+push constant 1000
+call Sys.wait 1
+pop temp 0
+push pointer 0
 call Game.convertColsToRows 1
+pop temp 0
+push pointer 0
+call Game.spawnRandomNum 1
 pop temp 0
 push constant 0
 return
@@ -7506,7 +7393,7 @@ function Game.slideDown 3
 push argument 0
 pop pointer 0
 push pointer 0
-call Game.slideLeft 1
+call Game.slideUp 1
 pop temp 0
 push constant 3
 pop local 0
@@ -7801,6 +7688,9 @@ pop temp 0
 push pointer 0
 call Game.convertColsToRows 1
 pop temp 0
+push pointer 0
+call Game.spawnRandomNum 1
+pop temp 0
 push constant 0
 return
 function Game.spawnRandomNum 5
@@ -7863,6 +7753,9 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push pointer 0
+call Game.convertRowsToCols 1
+pop temp 0
 push constant 0
 return
 label IF_FALSE2
@@ -7891,6 +7784,9 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push pointer 0
+call Game.convertRowsToCols 1
+pop temp 0
 push constant 0
 return
 label IF_FALSE4
@@ -7919,6 +7815,9 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push pointer 0
+call Game.convertRowsToCols 1
+pop temp 0
 push constant 0
 return
 label IF_FALSE6
@@ -7947,6 +7846,9 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push pointer 0
+call Game.convertRowsToCols 1
+pop temp 0
 push constant 0
 return
 label IF_FALSE8
@@ -7956,5 +7858,8 @@ label WHILE_END0
 push constant 0
 not
 pop this 3
+push pointer 0
+call Game.convertRowsToCols 1
+pop temp 0
 push constant 0
 return
