@@ -13,6 +13,7 @@ class Main {
 		let m = 160;
 		// The base of the 2048 game: a Game itself. 
 		let game = Game.new(32, 32);
+		do game.convertRowsToCols();
 		// Method 1 below. Use when still testing non-arrow-key-related subjects.
 		// In a While True loop...
 		// while (true) {
@@ -47,7 +48,10 @@ class Main {
 					do game.moveLeft();
 				}
 				// Up arrow: Call moveUp().
-
+				if (key = 131) {
+					do game.slideUp();
+					do game.convertColsToRows();
+				}
 				// Right arrow: Call moveRight().
 				if (key = 132) {
 					do game.moveRight();

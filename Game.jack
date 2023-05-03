@@ -1148,7 +1148,7 @@ class Game {
 	method void convertColsToRows() {
 		// each pair in convertRowsToCols is setting the row representation to the 
 		// the column representation. swapping sides sets the column representation
-		// t the row representation. 
+		// to the row representation. 
 		let row1[0] = col1[0];
 		let row1[1] = col2[0];
 		let row1[2] = col3[0];
@@ -1424,6 +1424,7 @@ class Game {
 		do slideLeft();
 		do mergeHorizontal();
 		do slideLeft();
+		do convertRowsToCols();
 		return; // part of the language
 	}
 
@@ -1434,6 +1435,143 @@ class Game {
 		do slideRight();
 		do mergeHorizontal();
 		do slideRight();
+		do convertRowsToCols();
+		return; // part of the language
+	}
+	/**
+	  * Description: Slides all numbers to as much to the top as they can. If two
+	  *              numbers collide, they stop at eachother.
+	  */
+	method void slideUp() {
+		var int i, j, temp;
+		var boolean exit;
+		// i should be 1. it represents the index of the access for column.
+		// (doesn't include 0 because there's nothing to slide into)
+		let i = 1;
+		// only iterate if i is in the indices of col. 
+		while (i < 4) {
+			let exit = false;
+			// check if the number is non-zero.
+			if (~(col1[i] = 0)) {
+				// if it is, then you can move it until it's all the way to the
+				// top or about to hit another number.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					// case 1: it hits another number. 
+					if (~(col1[j] = 0)) {
+						let exit = true;
+						let j = j + 1;
+						let temp = col1[i];
+						let col1[i] = 0;
+						let col1[j] = temp;
+					}
+					// case 2: it hits all the way to the top.
+					if ((j = 0) & ~exit) {
+						let exit = true;
+						let temp = col1[i];
+						let col1[i] = 0;
+						let col1[j] = temp;
+					}
+				}
+			}
+			let i = i + 1;
+		}
+		// repeat for the other cols. 
+		let i = 1;
+		let exit = false;
+		// only iterate if i is in the indices of col. 
+		while (i < 4) {
+			let exit = false;
+			// check if the number is non-zero.
+			if (~(col2[i] = 0)) {
+				// if it is, then you can move it until it's all the way to the
+				// top or about to hit another number.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					// case 1: it hits another number. 
+					if (~(col2[j] = 0)) {
+						let exit = true;
+						let j = j + 1;
+						let temp = col2[i];
+						let col2[i] = 0;
+						let col2[j] = temp;
+					}
+					// case 2: it hits all the way to the top.
+					if ((j = 0) & ~exit) {
+						let exit = true;
+						let temp = col2[i];
+						let col2[i] = 0;
+						let col2[j] = temp;
+					}
+				}
+			}
+			let i = i + 1;
+		}
+
+		let i = 1;
+		let exit = false;
+		// only iterate if i is in the indices of col. 
+		while (i < 4) {
+			let exit = false;
+			// check if the number is non-zero.
+			if (~(col3[i] = 0)) {
+				// if it is, then you can move it until it's all the way to the
+				// top or about to hit another number.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					// case 1: it hits another number. 
+					if (~(col3[j] = 0)) {
+						let exit = true;
+						let j = j + 1;
+						let temp = col3[i];
+						let col3[i] = 0;
+						let col3[j] = temp;
+					}
+					// case 2: it hits all the way to the top.
+					if ((j = 0) & ~exit) {
+						let exit = true;
+						let temp = col3[i];
+						let col3[i] = 0;
+						let col3[j] = temp;
+					}
+				}
+			}
+			let i = i + 1;
+		}
+		let i = 1;
+		let exit = false;
+		// only iterate if i is in the indices of col. 
+		while (i < 4) {
+			let exit = false;
+			// check if the number is non-zero.
+			if (~(col4[i] = 0)) {
+				// if it is, then you can move it until it's all the way to the
+				// top or about to hit another number.
+				let j = i;
+				while (~exit) {
+					let j = j - 1;
+					// case 1: it hits another number. 
+					if (~(col4[j] = 0)) {
+						let exit = true;
+						let j = j + 1;
+						let temp = col4[i];
+						let col4[i] = 0;
+						let col4[j] = temp;
+					}
+					// case 2: it hits all the way to the top.
+					if ((j = 0) & ~exit) {
+						let exit = true;
+						let temp = col4[i];
+						let col4[i] = 0;
+						let col4[j] = temp;
+					}
+				}
+			}
+			let i = i + 1;
+		}
 		return; // part of the language
 	}
 
