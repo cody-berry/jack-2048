@@ -147,11 +147,11 @@ class Game {
             do Screen.setColor(false); // color: white
             // color: white, coverage: cell
             do Screen.drawRectangle(TLCX + (16*x) + 1, TLCY + (16*y) + 1, 
-            	TLCX + (16*x) + 15, TLCX + (16*y) + 15);
+            	TLCX + (16*x) + 15, TLCY + (16*y) + 15);
             /*
 			 *	Display the powers of 2 tiles: 
 			 *	2/4/8/16/32/64/128/256/512/1024/2048
-			 *	(/4096/8192/16384/32768/65536?). 
+			 *	(/4096/8192/16384/32768?). 
 			 */
 
 			/*
@@ -167,7 +167,7 @@ class Game {
 			 *	borders. Each y is 16 pixels, and 16*32 = 512. That's where we 
 			 *  get it from. 
 			 */
-			let memAddress = 17442 + (y*512) + x;
+			let memAddress = 16384 + 32 + (TLCX/16) + (TLCY*32) + (y*512) + x;
 			// 2
 			if (y = 0) {
 				if (row1[x] = 2) {
@@ -1389,9 +1389,10 @@ class Game {
 	}
 
 	/** 
-	  * Description: Merges any pair of horizontally adjacent numbers. 
+	  * Description: Merges any horizontal pair of the same number from left to 
+	  *              right. 
 	  */
-	method void mergeHorizontal() {
+	method void mergeLeft() {
 		var int i;
 		
 		let i = 0; // this represents the pair of row1[0] and row1[1]
@@ -1427,15 +1428,56 @@ class Game {
 	}
 
 	/**
+	  * Description: Merges any horizontal pair of the same number from right to
+	  *              left. 
+	  */
+	method void mergeRight() {
+		var int i;
+		
+		let i = 2; // this represents the pair of row1[2] and row1[3]
+		while (i > -1) { // i = -1 represents row[-1] and row[0], not existent
+			// each row!
+			// row 1
+			if (row1[i] = row1[i+1]) {
+				let row1[i] = row1[i]*2;
+				let score = score + row1[i];
+				let row1[i + 1] = 0;
+			}
+			// row 2
+			if (row2[i] = row2[i+1]) {
+				let row2[i] = row2[i]*2;
+				let score = score + row2[i];
+				let row2[i + 1] = 0;
+			}
+			// row 3
+			if (row3[i] = row3[i+1]) {
+				let row3[i] = row3[i]*2;
+				let score = score + row3[i];
+				let row3[i + 1] = 0;
+			}
+			// row 4
+			if (row4[i] = row4[i+1]) {
+				let row4[i] = row4[i]*2;
+				let score = score + row4[i];
+				let row4[i + 1] = 0;
+			}
+			let i = i - 1;
+		}
+		return; // part of the language
+	}
+
+	/**
 	  * Description: Replicates the left command on the real 2048 app. 
 	  */
 	method void moveLeft() {
+		var Game original;
 		let original = copy();
 		do slideLeft();
-		do mergeHorizontal();
+		do mergeLeft();
 		do slideLeft();
-
-		do spawnRandomNum();
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
 		do convertRowsToCols();
 		return; // part of the language
 	}
@@ -1444,11 +1486,14 @@ class Game {
 	  * Description: Replicates the right command on the 2048 app.
 	  */
 	method void moveRight() {
-		let original = game.copy();
+		var Game original;
+		let original = copy();
 		do slideRight();
-		do mergeHorizontal();
+		do mergeRight();
 		do slideRight();
-		do spawnRandomNum();
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
 		do convertRowsToCols();
 		return; // part of the language
 	}
@@ -1458,8 +1503,42 @@ class Game {
       *              state of the argument object. Returns true if there are no 
       *              changes and returns false if there are changes.
 	  */
-	method boolean compareState(other) {
-		return ()
+	method boolean compareState(Game other) {
+		var Array stateOther, row1Other, row2Other, row3Other, row4Other;
+		let stateOther = other.getState();
+		let row1Other = stateOther[0];
+		let row2Other = stateOther[1];
+		let row3Other = stateOther[2];
+		let row4Other = stateOther[3];
+		return (row1[0] = row1Other[0]) &
+		       (row1[1] = row1Other[1]) &
+		       (row1[2] = row1Other[2]) &
+		       (row1[3] = row1Other[3]) &
+		       (row2[0] = row2Other[0]) &
+		       (row2[1] = row2Other[1]) &
+		       (row2[2] = row2Other[2]) &
+		       (row2[3] = row2Other[3]) &
+		       (row3[0] = row3Other[0]) &
+		       (row3[1] = row3Other[1]) &
+		       (row3[2] = row3Other[2]) &
+		       (row3[3] = row3Other[3]) &
+		       (row4[0] = row4Other[0]) &
+		       (row4[1] = row4Other[1]) &
+		       (row4[2] = row4Other[2]) &
+		       (row4[3] = row4Other[3]);
+	}
+
+	/**
+	  * Description: Returns [row1, row2, row3, row4], the state. 
+	  */
+	method Array getState() {
+		var Array result;
+		let result = Array.new(4);
+		let result[0] = row1;
+		let result[1] = row2;
+		let result[2] = row3;
+		let result[3] = row4;
+		return result;
 	}
 
 	/**
@@ -1599,9 +1678,9 @@ class Game {
 		return; // part of the language
 	}
 	/**
-	  * Description: Merges vertically adjacent pairs of the same number. 
+	  * Description: Merges vertical pairs of the same number from top to bottom. 
 	  */
-	method void mergeVertical() {
+	method void mergeUp() {
 		var int i;
 		
 		let i = 0; // this represents the pair of row1[0] and row1[1]
@@ -1640,7 +1719,7 @@ class Game {
 	  */
 	method void moveUp() {
 		do slideUp();
-		do mergeVertical();
+		do mergeUp();
 		do slideUp();
 		do convertColsToRows();
 		do spawnRandomNum();
@@ -1723,13 +1802,50 @@ class Game {
 		}
 		return; // part of the language
 	}
+	/**
+	  * Description: Merges vertical pairs of the same number from bottom to top. 
+	  */
+	method void mergeDown() {
+		var int i;
+		
+		let i = 2; // this represents the pair of row1[2] and row1[3]
+		while (i > -1) { // i = -1 represents row[-1] and row[0], not existent
+			// each row!
+			// row 1
+			if (col1[i] = col1[i+1]) {
+				let col1[i] = col1[i]*2;
+				let score = score + col1[i];
+				let col1[i + 1] = 0;
+			}
+			// row 2
+			if (col2[i] = col2[i+1]) {
+				let col2[i] = col2[i]*2;
+				let score = score + col2[i];
+				let col2[i + 1] = 0;
+			}
+			// row 3
+			if (col3[i] = col3[i+1]) {
+				let col3[i] = col3[i]*2;
+				let score = score + col3[i];
+				let col3[i + 1] = 0;
+			}
+			// row 4
+			if (col4[i] = col4[i+1]) {
+				let col4[i] = col4[i]*2;
+				let score = score + col4[i];
+				let col4[i + 1] = 0;
+			}
+			let i = i - 1;
+		}
+		return; // part of the language		
+	}
 
 	/**
 	  * Description: Replicates the down command in the real 2048 app.
 	  */
 	method void moveDown() {
 		do slideDown();
-		do mergeVertical();
+		do mergeDown();
 		do slideDown();
 		do convertColsToRows();
 		do spawnRandomNum();
@@ -1829,7 +1945,7 @@ class Game {
 	  */
 	method Game copy() {
 		var Game copy;
-		let copy = Game.new(32, 32);
+		let copy = Game.new(TLCX, TLCY);
 		do copy.configureState(row1, row2, row3, row4);
 		do copy.setScore(score);
 		return copy;
