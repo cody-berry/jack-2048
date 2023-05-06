@@ -7962,9 +7962,12 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function Game.moveUp 0
+function Game.moveUp 1
 push argument 0
 pop pointer 0
+push pointer 0
+call Game.copy 1
+pop local 0
 push pointer 0
 call Game.slideUp 1
 pop temp 0
@@ -7978,8 +7981,16 @@ push pointer 0
 call Game.convertColsToRows 1
 pop temp 0
 push pointer 0
+push local 0
+call Game.compareState 2
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
 call Game.spawnRandomNum 1
 pop temp 0
+label IF_FALSE0
 push constant 0
 return
 function Game.slideDown 3
@@ -8482,9 +8493,12 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function Game.moveDown 0
+function Game.moveDown 1
 push argument 0
 pop pointer 0
+push pointer 0
+call Game.copy 1
+pop local 0
 push pointer 0
 call Game.slideDown 1
 pop temp 0
@@ -8498,8 +8512,16 @@ push pointer 0
 call Game.convertColsToRows 1
 pop temp 0
 push pointer 0
+push local 0
+call Game.compareState 2
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
 call Game.spawnRandomNum 1
 pop temp 0
+label IF_FALSE0
 push constant 0
 return
 function Game.spawnRandomNum 5
@@ -8664,9 +8686,6 @@ label IF_FALSE8
 label IF_FALSE7
 goto WHILE_EXP0
 label WHILE_END0
-push constant 0
-not
-pop this 3
 push pointer 0
 call Game.convertRowsToCols 1
 pop temp 0

@@ -1718,11 +1718,15 @@ class Game {
 	  * Description: Replicates the up command in the real 2048 app.
 	  */
 	method void moveUp() {
+		var Game original;
+		let original = copy();
 		do slideUp();
 		do mergeUp();
 		do slideUp();
 		do convertColsToRows();
-		do spawnRandomNum();
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
 		return; // part of the language
 	}
 
@@ -1844,11 +1848,15 @@ class Game {
 	  * Description: Replicates the down command in the real 2048 app.
 	  */
 	method void moveDown() {
+		var Game original;
+		let original = copy();
 		do slideDown();
 		do mergeDown();
 		do slideDown();
 		do convertColsToRows();
-		do spawnRandomNum();
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
 		return; // part of the language
 	}
 
@@ -1901,7 +1909,6 @@ class Game {
 				}
 			} 
 		}
-		let failed = true;
 		do convertRowsToCols();
 		return;
 	}
