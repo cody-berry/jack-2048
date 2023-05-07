@@ -8,6 +8,14 @@ push argument 1
 pop this 1
 push constant 0
 pop this 2
+push static 0
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop static 0
+label IF_FALSE0
 push constant 0
 pop this 3
 push constant 0
@@ -150,12 +158,34 @@ function Game.display 3
 push argument 0
 pop pointer 0
 push constant 0
+not
 call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 24
+push constant 511
+push constant 255
+call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 push constant 0
 push constant 511
+push constant 8
+call Screen.drawRectangle 4
+pop temp 0
+push constant 100
+push constant 0
+push constant 347
 push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 8
+push constant 100
+push constant 24
 call Screen.drawRectangle 4
 pop temp 0
 push constant 1
@@ -183,8 +213,42 @@ pop temp 0
 push this 2
 call Output.printInt 1
 pop temp 0
+push constant 1
+push constant 44
+call Output.moveCursor 2
+pop temp 0
+push constant 12
+call String.new 1
+push constant 66
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 67
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push static 0
+call Output.printInt 1
+pop temp 0
 push constant 0
-not
 call Screen.setColor 1
 pop temp 0
 push this 0
@@ -202,6 +266,50 @@ add
 call Screen.drawRectangle 4
 pop temp 0
 push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 0
+push constant 64
+add
+push this 1
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 64
+add
+push this 1
+push this 0
+push constant 64
+add
+push this 1
+push constant 64
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 1
+push constant 64
+add
+push this 0
+push constant 64
+add
+push this 1
+push constant 64
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 1
+push this 0
+push this 1
+push constant 64
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
 pop local 0
 push constant 0
 pop local 1
@@ -212,6 +320,7 @@ lt
 not
 if-goto WHILE_END0
 push constant 0
+not
 call Screen.setColor 1
 pop temp 0
 push this 0
@@ -6572,6 +6681,15 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+pop static 0
+label IF_FALSE1
 label IF_FALSE0
 push local 0
 push this 5
@@ -6586,59 +6704,68 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 0
-push this 5
-add
-push local 0
-push this 5
-add
-pop pointer 1
-push that 0
-push constant 2
-call Math.multiply 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push this 2
-push local 0
-push this 5
-add
-pop pointer 1
-push that 0
-add
-pop this 2
-push local 0
-push constant 1
-add
-push this 5
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-label IF_FALSE1
-push local 0
-push this 6
-add
-pop pointer 1
-push that 0
-push local 0
-push constant 1
-add
-push this 6
-add
-pop pointer 1
-push that 0
-eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push local 0
+push this 5
+add
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+add
+pop this 2
+push local 0
+push constant 1
+add
+push this 5
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 2
+pop static 0
+label IF_FALSE3
+label IF_FALSE2
+push local 0
+push this 6
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 6
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
 push this 6
 add
 push local 0
@@ -6670,7 +6797,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE2
+push this 2
+push static 0
+gt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 2
+pop static 0
+label IF_FALSE5
+label IF_FALSE4
 push local 0
 push this 7
 add
@@ -6684,9 +6820,9 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push local 0
 push this 7
 add
@@ -6719,7 +6855,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE3
+push this 2
+push static 0
+gt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 2
+pop static 0
+label IF_FALSE7
+label IF_FALSE6
 push local 0
 push constant 1
 add
@@ -6788,6 +6933,15 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+pop static 0
+label IF_FALSE1
 label IF_FALSE0
 push local 0
 push this 5
@@ -6802,59 +6956,68 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 0
-push this 5
-add
-push local 0
-push this 5
-add
-pop pointer 1
-push that 0
-push constant 2
-call Math.multiply 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push this 2
-push local 0
-push this 5
-add
-pop pointer 1
-push that 0
-add
-pop this 2
-push local 0
-push constant 1
-add
-push this 5
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-label IF_FALSE1
-push local 0
-push this 6
-add
-pop pointer 1
-push that 0
-push local 0
-push constant 1
-add
-push this 6
-add
-pop pointer 1
-push that 0
-eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push local 0
+push this 5
+add
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+add
+pop this 2
+push local 0
+push constant 1
+add
+push this 5
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 2
+pop static 0
+label IF_FALSE3
+label IF_FALSE2
+push local 0
+push this 6
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 6
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
 push this 6
 add
 push local 0
@@ -6886,7 +7049,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE2
+push this 2
+push static 0
+gt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 2
+pop static 0
+label IF_FALSE5
+label IF_FALSE4
 push local 0
 push this 7
 add
@@ -6900,9 +7072,9 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push local 0
 push this 7
 add
@@ -6935,7 +7107,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE3
+push this 2
+push static 0
+gt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 2
+pop static 0
+label IF_FALSE7
+label IF_FALSE6
 push local 0
 push constant 1
 sub
@@ -6970,6 +7151,9 @@ push pointer 0
 call Game.spawnRandomNum 1
 pop temp 0
 label IF_FALSE0
+push local 0
+call Game.dispose 1
+pop temp 0
 push pointer 0
 call Game.convertRowsToCols 1
 pop temp 0
@@ -7001,6 +7185,9 @@ push pointer 0
 call Game.spawnRandomNum 1
 pop temp 0
 label IF_FALSE0
+push local 0
+call Game.dispose 1
+pop temp 0
 push pointer 0
 call Game.convertRowsToCols 1
 pop temp 0
@@ -7806,6 +7993,15 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+pop static 0
+label IF_FALSE1
 label IF_FALSE0
 push local 0
 push this 9
@@ -7820,59 +8016,68 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 0
-push this 9
-add
-push local 0
-push this 9
-add
-pop pointer 1
-push that 0
-push constant 2
-call Math.multiply 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push this 2
-push local 0
-push this 9
-add
-pop pointer 1
-push that 0
-add
-pop this 2
-push local 0
-push constant 1
-add
-push this 9
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-label IF_FALSE1
-push local 0
-push this 10
-add
-pop pointer 1
-push that 0
-push local 0
-push constant 1
-add
-push this 10
-add
-pop pointer 1
-push that 0
-eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push local 0
+push this 9
+add
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+add
+pop this 2
+push local 0
+push constant 1
+add
+push this 9
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 2
+pop static 0
+label IF_FALSE3
+label IF_FALSE2
+push local 0
+push this 10
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 10
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
 push this 10
 add
 push local 0
@@ -7904,7 +8109,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE2
+push this 2
+push static 0
+gt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 2
+pop static 0
+label IF_FALSE5
+label IF_FALSE4
 push local 0
 push this 11
 add
@@ -7918,9 +8132,9 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push local 0
 push this 11
 add
@@ -7953,7 +8167,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE3
+push this 2
+push static 0
+gt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 2
+pop static 0
+label IF_FALSE7
+label IF_FALSE6
 push local 0
 push constant 1
 add
@@ -7991,6 +8214,9 @@ push pointer 0
 call Game.spawnRandomNum 1
 pop temp 0
 label IF_FALSE0
+push local 0
+call Game.dispose 1
+pop temp 0
 push constant 0
 return
 function Game.slideDown 3
@@ -8337,6 +8563,15 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+pop static 0
+label IF_FALSE1
 label IF_FALSE0
 push local 0
 push this 9
@@ -8351,59 +8586,68 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 0
-push this 9
-add
-push local 0
-push this 9
-add
-pop pointer 1
-push that 0
-push constant 2
-call Math.multiply 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push this 2
-push local 0
-push this 9
-add
-pop pointer 1
-push that 0
-add
-pop this 2
-push local 0
-push constant 1
-add
-push this 9
-add
-push constant 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-label IF_FALSE1
-push local 0
-push this 10
-add
-pop pointer 1
-push that 0
-push local 0
-push constant 1
-add
-push this 10
-add
-pop pointer 1
-push that 0
-eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push local 0
+push this 9
+add
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+add
+pop this 2
+push local 0
+push constant 1
+add
+push this 9
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push static 0
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 2
+pop static 0
+label IF_FALSE3
+label IF_FALSE2
+push local 0
+push this 10
+add
+pop pointer 1
+push that 0
+push local 0
+push constant 1
+add
+push this 10
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
 push this 10
 add
 push local 0
@@ -8435,7 +8679,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE2
+push this 2
+push static 0
+gt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 2
+pop static 0
+label IF_FALSE5
+label IF_FALSE4
 push local 0
 push this 11
 add
@@ -8449,9 +8702,9 @@ add
 pop pointer 1
 push that 0
 eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push local 0
 push this 11
 add
@@ -8484,7 +8737,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE3
+push this 2
+push static 0
+gt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 2
+pop static 0
+label IF_FALSE7
+label IF_FALSE6
 push local 0
 push constant 1
 sub
@@ -8522,6 +8784,9 @@ push pointer 0
 call Game.spawnRandomNum 1
 pop temp 0
 label IF_FALSE0
+push local 0
+call Game.dispose 1
+pop temp 0
 push constant 0
 return
 function Game.spawnRandomNum 5
@@ -8917,4 +9182,9 @@ push this 2
 call Game.setScore 2
 pop temp 0
 push local 0
+return
+function Game.checkFailed 0
+push argument 0
+pop pointer 0
+push constant 0
 return

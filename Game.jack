@@ -1,5 +1,6 @@
 class Game {
 	field int TLCX, TLCY, score;
+	static int bestScore;
 	field boolean failed;
 	field Array row1, row2, row3, row4;
 	field Array col1, col2, col3, col4;
@@ -26,6 +27,9 @@ class Game {
 		// by 4 because score is increased by the result of merging 2 
 		// numbers, not a very accurate measure of how well you're doing.
 		let score = 0;
+		if (~(bestScore)) {
+			let bestScore = 0;
+		}
 		// is the game failed?
 		let failed = false;
 		// use a for loop to set row1's, row2's, etc. and col1's, 
@@ -116,23 +120,46 @@ class Game {
 	method void display() {
 		var int x, y, memAddress;
 
-		// White background. Spans across the entire screen. 
-		do Screen.setColor(false); // color: white
-		do Screen.drawRectangle(0, 0, 511, 255); // color: white, coverage: all
+		// Black background. Spans across the screen except for at the score line and above. 
+		do Screen.setColor(true); 
+		do Screen.drawRectangle(0, 24, 511, 255); 
+		// Spans the row below the score line. 
+		do Screen.drawRectangle(0, 0, 511, 8);
+		// Spans where the score line can't reach. 
+		do Screen.drawRectangle(100, 0, 347, 255);
+		// If the game resets, there might be some extra digits.
+		do Screen.setColor(false);
+		do Screen.drawRectangle(0, 8, 100, 24);
 
 		// Score. Displays "SCORE: " and the score. 
 		do Output.moveCursor(1, 0);
 		do Output.printString("SCORE: ");
 		do Output.printInt(score);
 
+		// Best score. Displays "HIGH SCORE: and the score."
+		do Output.moveCursor(1, 44);
+		do Output.printString("BEST SCORE: ");
+		do Output.printInt(bestScore);
+
 		// Black rectangle. The rectangle has a padding of 4, meaning that
 		// the top-left corner is actually 4 more to the top-left corner
 		// of the screen than it would usually be. It has a size of 64, 
 		// but it actually goes 4 extra to the bottom-right corner than it
 		// would otherwise go to, which is what 68 is. 
-		do Screen.setColor(true); // color: black
-		// color: black, coverage: grid
+		do Screen.setColor(false); // color: white
+		// color: white, coverage: grid
 		do Screen.drawRectangle(TLCX - 4, TLCY - 4, TLCX + 68, TLCY + 68);
+
+		// Borders.
+		do Screen.setColor(true); // color: black
+		// upper border
+		do Screen.drawLine(TLCX, TLCY, TLCX + 64, TLCY); 
+		// right border
+		do Screen.drawLine(TLCX + 64, TLCY, TLCX + 64, TLCY + 64);
+		// bottom border
+		do Screen.drawLine(TLCX, TLCY + 64, TLCX + 64, TLCY + 64);
+		// left border
+		do Screen.drawLine(TLCX, TLCY, TLCX, TLCY + 64);
 
 		// White rectangles for each cell. Define x and y to 0. They 
 		// represent what cell we're on. Use a while loop that's condition
@@ -144,7 +171,7 @@ class Game {
 			 * the cell should start. The cell should start 16*x + 1 pixels 
 			 * the right of TLCX and 16*y + 1 pixels down of TLCY. 
              */
-            do Screen.setColor(false); // color: white
+            do Screen.setColor(true); // color: white
             // color: white, coverage: cell
             do Screen.drawRectangle(TLCX + (16*x) + 1, TLCY + (16*y) + 1, 
             	TLCX + (16*x) + 15, TLCY + (16*y) + 15);
@@ -1403,24 +1430,36 @@ class Game {
 				let row1[i] = row1[i]*2;
 				let score = score + row1[i];
 				let row1[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 2
 			if (row2[i] = row2[i+1]) {
 				let row2[i] = row2[i]*2;
 				let score = score + row2[i];
 				let row2[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 3
 			if (row3[i] = row3[i+1]) {
 				let row3[i] = row3[i]*2;
 				let score = score + row3[i];
 				let row3[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 4
 			if (row4[i] = row4[i+1]) {
 				let row4[i] = row4[i]*2;
 				let score = score + row4[i];
 				let row4[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			let i = i + 1;
 		}
@@ -1442,24 +1481,36 @@ class Game {
 				let row1[i] = row1[i]*2;
 				let score = score + row1[i];
 				let row1[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 2
 			if (row2[i] = row2[i+1]) {
 				let row2[i] = row2[i]*2;
 				let score = score + row2[i];
 				let row2[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 3
 			if (row3[i] = row3[i+1]) {
 				let row3[i] = row3[i]*2;
 				let score = score + row3[i];
 				let row3[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 4
 			if (row4[i] = row4[i+1]) {
 				let row4[i] = row4[i]*2;
 				let score = score + row4[i];
 				let row4[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			let i = i - 1;
 		}
@@ -1475,9 +1526,11 @@ class Game {
 		do slideLeft();
 		do mergeLeft();
 		do slideLeft();
+		// only spawn if the game state changed
 		if (~(compareState(original))) {
 			do spawnRandomNum();
 		}
+		do original.dispose(); // saves space
 		do convertRowsToCols();
 		return; // part of the language
 	}
@@ -1491,9 +1544,11 @@ class Game {
 		do slideRight();
 		do mergeRight();
 		do slideRight();
+		// only spawn if the game state changed
 		if (~(compareState(original))) {
 			do spawnRandomNum();
 		}
+		do original.dispose(); // saves space
 		do convertRowsToCols();
 		return; // part of the language
 	}
@@ -1691,24 +1746,36 @@ class Game {
 				let col1[i] = col1[i]*2;
 				let score = score + col1[i];
 				let col1[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 2
 			if (col2[i] = col2[i+1]) {
 				let col2[i] = col2[i]*2;
 				let score = score + col2[i];
 				let col2[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 3
 			if (col3[i] = col3[i+1]) {
 				let col3[i] = col3[i]*2;
 				let score = score + col3[i];
 				let col3[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 4
 			if (col4[i] = col4[i+1]) {
 				let col4[i] = col4[i]*2;
 				let score = score + col4[i];
 				let col4[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			let i = i + 1;
 		}
@@ -1724,9 +1791,11 @@ class Game {
 		do mergeUp();
 		do slideUp();
 		do convertColsToRows();
+		// only spawn if the game state changed
 		if (~(compareState(original))) {
 			do spawnRandomNum();
 		}
+		do original.dispose(); // saves space
 		return; // part of the language
 	}
 
@@ -1820,24 +1889,36 @@ class Game {
 				let col1[i] = col1[i]*2;
 				let score = score + col1[i];
 				let col1[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 2
 			if (col2[i] = col2[i+1]) {
 				let col2[i] = col2[i]*2;
 				let score = score + col2[i];
 				let col2[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 3
 			if (col3[i] = col3[i+1]) {
 				let col3[i] = col3[i]*2;
 				let score = score + col3[i];
 				let col3[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			// row 4
 			if (col4[i] = col4[i+1]) {
 				let col4[i] = col4[i]*2;
 				let score = score + col4[i];
 				let col4[i + 1] = 0;
+				if (score > bestScore) {
+					let bestScore = score;
+				}
 			}
 			let i = i - 1;
 		}
@@ -1854,9 +1935,11 @@ class Game {
 		do mergeDown();
 		do slideDown();
 		do convertColsToRows();
+		// only spawn if the game state changed
 		if (~(compareState(original))) {
 			do spawnRandomNum();
 		}
+		do original.dispose(); // saves space
 		return; // part of the language
 	}
 
@@ -1956,5 +2039,13 @@ class Game {
 		do copy.configureState(row1, row2, row3, row4);
 		do copy.setScore(score);
 		return copy;
+	}
+
+	/**
+	  * Description: Have you failed the game? If you did, I'd be disappointed. 
+	  *              There's always a wnning strategy here. 
+	  */
+	method void checkFailed() {
+		return;
 	}
 }

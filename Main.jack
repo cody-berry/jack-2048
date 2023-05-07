@@ -12,7 +12,7 @@ class Main {
 		let c = 41;
 		let m = 160;
 		// The base of the 2048 game: a Game itself. 
-		let game = Game.new(320, 160);
+		let game = Game.new(32, 32);
 		do game.convertRowsToCols();
 		// Method 1 below. Use when still testing non-arrow-key-related subjects.
 		// In a While True loop...
@@ -59,15 +59,18 @@ class Main {
 				if (key = 133) {
 					do game.moveDown();
 				}
-				// R: Set failed to true. Use to retry the game. 
+				// R: Retry the game.
 				if (key = 82) {
-					do game.setFailed();
+					let game = Game.new(32, 32);
+					// starter
+					do game.spawnRandomNum();
+					do game.spawnRandomNum();
 				}
 				// Display the game.
 				do game.display(); 
 
 				// While the key is not 0, do nothing. 
-				while (~(Memory.peek(24576) = 0)) {}
+				while (Memory.peek(24576) = key) {}
 			}
 			// In a while loop with the condition of the game not being 
 			// restarted...
