@@ -275,39 +275,9 @@ push this 0
 push constant 64
 add
 push this 1
-call Screen.drawLine 4
-pop temp 0
-push this 0
 push constant 64
 add
-push this 1
-push this 0
-push constant 64
-add
-push this 1
-push constant 64
-add
-call Screen.drawLine 4
-pop temp 0
-push this 0
-push this 1
-push constant 64
-add
-push this 0
-push constant 64
-add
-push this 1
-push constant 64
-add
-call Screen.drawLine 4
-pop temp 0
-push this 0
-push this 1
-push this 0
-push this 1
-push constant 64
-add
-call Screen.drawLine 4
+call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 pop local 0
@@ -320,7 +290,6 @@ lt
 not
 if-goto WHILE_END0
 push constant 0
-not
 call Screen.setColor 1
 pop temp 0
 push this 0
@@ -7157,6 +7126,9 @@ pop temp 0
 push pointer 0
 call Game.convertRowsToCols 1
 pop temp 0
+push pointer 0
+call Game.checkFailed 1
+pop temp 0
 push constant 0
 return
 function Game.moveRight 1
@@ -9183,8 +9155,27 @@ call Game.setScore 2
 pop temp 0
 push local 0
 return
-function Game.checkFailed 0
+function Game.checkFailed 1
 push argument 0
 pop pointer 0
+push pointer 0
+call Game.copy 1
+pop local 0
+push local 0
+call Game.moveLeft 1
+pop temp 0
+push pointer 0
+push local 0
+call Game.compareState 2
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push pointer 0
+call Game.setFailed 1
+pop temp 0
 push constant 0
 return

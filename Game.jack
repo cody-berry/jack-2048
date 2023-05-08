@@ -150,16 +150,9 @@ class Game {
 		// color: white, coverage: grid
 		do Screen.drawRectangle(TLCX - 4, TLCY - 4, TLCX + 68, TLCY + 68);
 
-		// Borders.
-		do Screen.setColor(true); // color: black
-		// upper border
-		do Screen.drawLine(TLCX, TLCY, TLCX + 64, TLCY); 
-		// right border
-		do Screen.drawLine(TLCX + 64, TLCY, TLCX + 64, TLCY + 64);
-		// bottom border
-		do Screen.drawLine(TLCX, TLCY + 64, TLCX + 64, TLCY + 64);
-		// left border
-		do Screen.drawLine(TLCX, TLCY, TLCX, TLCY + 64);
+		// Now we draw the ordinary rectangle for the grid.
+		do Screen.setColor(true);
+		do Screen.drawRectangle(TLCX, TLCY, TLCX + 64, TLCY + 64);
 
 		// White rectangles for each cell. Define x and y to 0. They 
 		// represent what cell we're on. Use a while loop that's condition
@@ -171,7 +164,7 @@ class Game {
 			 * the cell should start. The cell should start 16*x + 1 pixels 
 			 * the right of TLCX and 16*y + 1 pixels down of TLCY. 
              */
-            do Screen.setColor(true); // color: white
+            do Screen.setColor(false); // color: white
             // color: white, coverage: cell
             do Screen.drawRectangle(TLCX + (16*x) + 1, TLCY + (16*y) + 1, 
             	TLCX + (16*x) + 15, TLCY + (16*y) + 15);
@@ -1532,6 +1525,7 @@ class Game {
 		}
 		do original.dispose(); // saves space
 		do convertRowsToCols();
+		do checkFailed();
 		return; // part of the language
 	}
 
@@ -2042,10 +2036,20 @@ class Game {
 	}
 
 	/**
-	  * Description: Have you failed the game? If you did, I'd be disappointed. 
-	  *              There's always a wnning strategy here. 
+	  * Description: Have you failed the game? More often than not, you're going to
+	  *              end the game with a heap overflow. 
 	  */
 	method void checkFailed() {
+		var Game failTest;
+		// create a copy of the game. it's what we're going to use to test. 
+		let failTest = copy();
+		// test by moving left and seeing if there's a difference.
+		do failTest.moveLeft();
+		// if there's a difference, return. otherwise, continue.
+		if (~(compareState(failTest))) {
+			return;
+		}
+		do setFailed();
 		return;
 	}
 }
