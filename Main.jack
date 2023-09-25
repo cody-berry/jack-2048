@@ -45,7 +45,6 @@ class Main {
 				// Left arrow: Call moveLeft().
 				if (key = 130) {
 					do game.moveLeft();
-					let game = game.copy();
 				}
 				// Up arrow: Call moveUp().
 				if (key = 131) {

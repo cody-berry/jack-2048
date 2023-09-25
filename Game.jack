@@ -1,6 +1,5 @@
 class Game {
 	field int TLCX, TLCY, score;
-	static int bestScore;
 	field boolean failed;
 	field Array row1, row2, row3, row4;
 	field Array col1, col2, col3, col4;
@@ -27,9 +26,6 @@ class Game {
 		// by 4 because score is increased by the result of merging 2 
 		// numbers, not a very accurate measure of how well you're doing.
 		let score = 0;
-		if (~(bestScore)) {
-			let bestScore = 0;
-		}
 		// is the game failed?
 		let failed = false;
 		// use a for loop to set row1's, row2's, etc. and col1's, 
@@ -119,6 +115,7 @@ class Game {
 	  */
 	method void display() {
 		var int x, y, memAddress;
+		var String string;
 
 		// Black background. Spans across the screen except for at the score line and above. 
 		do Screen.setColor(true); 
@@ -126,20 +123,17 @@ class Game {
 		// Spans the row below the score line. 
 		do Screen.drawRectangle(0, 0, 511, 8);
 		// Spans where the score line can't reach. 
-		do Screen.drawRectangle(100, 0, 347, 255);
+		do Screen.drawRectangle(100, 0, 511, 255);
 		// If the game resets, there might be some extra digits.
 		do Screen.setColor(false);
 		do Screen.drawRectangle(0, 8, 100, 24);
 
 		// Score. Displays "SCORE: " and the score. 
 		do Output.moveCursor(1, 0);
-		do Output.printString("SCORE: ");
+		let string = "SCORE: ";
+		do Output.printString(string);
+		do string.dispose();
 		do Output.printInt(score);
-
-		// Best score. Displays "HIGH SCORE: and the score."
-		do Output.moveCursor(1, 44);
-		do Output.printString("BEST SCORE: ");
-		do Output.printInt(bestScore);
 
 		// Black rectangle. The rectangle has a padding of 4, meaning that
 		// the top-left corner is actually 4 more to the top-left corner
@@ -1423,36 +1417,24 @@ class Game {
 				let row1[i] = row1[i]*2;
 				let score = score + row1[i];
 				let row1[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 2
 			if (row2[i] = row2[i+1]) {
 				let row2[i] = row2[i]*2;
 				let score = score + row2[i];
 				let row2[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 3
 			if (row3[i] = row3[i+1]) {
 				let row3[i] = row3[i]*2;
 				let score = score + row3[i];
 				let row3[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 4
 			if (row4[i] = row4[i+1]) {
 				let row4[i] = row4[i]*2;
 				let score = score + row4[i];
 				let row4[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			let i = i + 1;
 		}
@@ -1474,36 +1456,24 @@ class Game {
 				let row1[i] = row1[i]*2;
 				let score = score + row1[i];
 				let row1[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 2
 			if (row2[i] = row2[i+1]) {
 				let row2[i] = row2[i]*2;
 				let score = score + row2[i];
 				let row2[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 3
 			if (row3[i] = row3[i+1]) {
 				let row3[i] = row3[i]*2;
 				let score = score + row3[i];
 				let row3[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 4
 			if (row4[i] = row4[i+1]) {
 				let row4[i] = row4[i]*2;
 				let score = score + row4[i];
 				let row4[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			let i = i - 1;
 		}
@@ -1530,9 +1500,46 @@ class Game {
 	}
 
 	/**
+	  * Description: Replicates the left command on the real 2048 app without checkFailed().
+	  */
+	method void moveLeftTest() {
+		var Game original;
+		let original = copy();
+		do slideLeft();
+		do mergeLeft();
+		do slideLeft();
+		// only spawn if the game state changed
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
+		do original.dispose(); // saves space
+		do convertRowsToCols();
+		return; // part of the language
+	}
+
+	/**
 	  * Description: Replicates the right command on the 2048 app.
 	  */
 	method void moveRight() {
+		var Game original;
+		let original = copy();
+		do slideRight();
+		do mergeRight();
+		do slideRight();
+		// only spawn if the game state changed
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
+		do original.dispose(); // saves space
+		do convertRowsToCols();
+		do checkFailed();
+		return; // part of the language
+	}
+
+	/**
+	  * Description: Replicates the right command on the 2048 app without checkFailed().
+	  */
+	method void moveRightTest() {
 		var Game original;
 		let original = copy();
 		do slideRight();
@@ -1740,36 +1747,24 @@ class Game {
 				let col1[i] = col1[i]*2;
 				let score = score + col1[i];
 				let col1[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 2
 			if (col2[i] = col2[i+1]) {
 				let col2[i] = col2[i]*2;
 				let score = score + col2[i];
 				let col2[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 3
 			if (col3[i] = col3[i+1]) {
 				let col3[i] = col3[i]*2;
 				let score = score + col3[i];
 				let col3[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 4
 			if (col4[i] = col4[i+1]) {
 				let col4[i] = col4[i]*2;
 				let score = score + col4[i];
 				let col4[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			let i = i + 1;
 		}
@@ -1779,6 +1774,25 @@ class Game {
 	  * Description: Replicates the up command in the real 2048 app.
 	  */
 	method void moveUp() {
+		var Game original;
+		let original = copy();
+		do slideUp();
+		do mergeUp();
+		do slideUp();
+		do convertColsToRows();
+		// only spawn if the game state changed
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
+		do original.dispose(); // saves space
+		do checkFailed();
+		return; // part of the language
+	}
+
+	/**
+	  * Description: Replicates the up command in the real 2048 app.
+	  */
+	method void moveUpTest() {
 		var Game original;
 		let original = copy();
 		do slideUp();
@@ -1883,36 +1897,24 @@ class Game {
 				let col1[i] = col1[i]*2;
 				let score = score + col1[i];
 				let col1[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 2
 			if (col2[i] = col2[i+1]) {
 				let col2[i] = col2[i]*2;
 				let score = score + col2[i];
 				let col2[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 3
 			if (col3[i] = col3[i+1]) {
 				let col3[i] = col3[i]*2;
 				let score = score + col3[i];
 				let col3[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			// row 4
 			if (col4[i] = col4[i+1]) {
 				let col4[i] = col4[i]*2;
 				let score = score + col4[i];
 				let col4[i + 1] = 0;
-				if (score > bestScore) {
-					let bestScore = score;
-				}
 			}
 			let i = i - 1;
 		}
@@ -1923,6 +1925,25 @@ class Game {
 	  * Description: Replicates the down command in the real 2048 app.
 	  */
 	method void moveDown() {
+		var Game original;
+		let original = copy();
+		do slideDown();
+		do mergeDown();
+		do slideDown();
+		do convertColsToRows();
+		// only spawn if the game state changed
+		if (~(compareState(original))) {
+			do spawnRandomNum();
+		}
+		do original.dispose(); // saves space
+		do checkFailed();
+		return; // part of the language
+	}
+
+	/**
+	  * Description: Replicates the down command in the real 2048 app without checkFailed().
+	  */
+	method void moveDownTest() {
 		var Game original;
 		let original = copy();
 		do slideDown();
@@ -2043,12 +2064,33 @@ class Game {
 		var Game failTest;
 		// create a copy of the game. it's what we're going to use to test. 
 		let failTest = copy();
-		// test by moving left and seeing if there's a difference.
-		do failTest.moveLeft();
+		// test by moving each direction
+		do failTest.moveLeftTest();
 		// if there's a difference, return. otherwise, continue.
 		if (~(compareState(failTest))) {
+			do failTest.dispose();
 			return;
 		}
+
+		do failTest.moveUpTest();
+		if (~(compareState(failTest))) {
+			do failTest.dispose();
+			return;
+		}
+
+		do failTest.moveRightTest();
+		if (~(compareState(failTest))) {
+			do failTest.dispose();
+			return;
+		}
+
+		do failTest.moveDownTest();
+		if (~(compareState(failTest))) {
+			do failTest.dispose();
+			return;
+		}
+
+		do failTest.dispose();
 		do setFailed();
 		return;
 	}

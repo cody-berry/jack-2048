@@ -55,9 +55,6 @@ label IF_TRUE0
 push local 0
 call Game.moveLeft 1
 pop temp 0
-push local 0
-call Game.copy 1
-pop local 0
 label IF_FALSE0
 push local 1
 push constant 131
